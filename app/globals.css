@@ -25,3 +25,10 @@ body {
 :focus-visible {
   @apply outline-2 outline-offset-2 outline-blue-500;
 }
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

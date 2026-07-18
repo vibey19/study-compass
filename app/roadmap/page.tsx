@@ -79,7 +79,7 @@ export default function RoadmapPage() {
                   <span className="font-semibold">
                     Week {w.week} — {w.title}
                   </span>
-                  <span className="ml-2 whitespace-nowrap text-xs text-zinc-500">
+                  <span className="block whitespace-nowrap text-xs text-zinc-500 sm:ml-2 sm:inline">
                     {range}
                   </span>
                 </span>
@@ -93,7 +93,7 @@ export default function RoadmapPage() {
 
               {isOpen && (
                 <div className="overflow-x-auto border-t border-zinc-100 dark:border-zinc-800">
-                  <table className="w-full min-w-[560px] text-sm">
+                  <table className="w-full text-sm md:min-w-[560px]">
                     <tbody>
                       {w.days.map((d) => {
                         const isDone = !!progress[d.id];

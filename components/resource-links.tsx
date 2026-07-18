@@ -28,7 +28,7 @@ export function ResourceLinks({
             href={hrefFor(r)}
             target="_blank"
             rel="noreferrer"
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            className="break-words text-blue-600 hover:underline dark:text-blue-400"
           >
             {r} <span aria-hidden>↗</span>
           </a>

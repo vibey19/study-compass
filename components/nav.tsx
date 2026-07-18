@@ -33,37 +33,39 @@ export function Nav() {
     { href: "/settings", label: "Settings" },
   ];
 
+  const navLinks = links.map((l) => {
+    const active =
+      l.label === "This Week"
+        ? pathname.startsWith("/week")
+        : pathname === l.href;
+    return (
+      <Link
+        key={l.label}
+        href={l.href}
+        className={`relative flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors sm:py-1 ${
+          active
+            ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+            : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+        }`}
+      >
+        {l.label}
+        {l.label === "Backlog" && backlogCount > 0 && (
+          <span className="rounded-full bg-red-500 px-1.5 text-[10px] font-semibold leading-4 text-white">
+            {backlogCount}
+          </span>
+        )}
+      </Link>
+    );
+  });
+
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 py-3">
-        <Link href="/" className="mr-2 shrink-0 text-sm font-bold tracking-tight">
+      <div className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 pt-3 pb-2 sm:py-3">
+        <Link href="/" className="mr-auto shrink-0 text-sm font-bold tracking-tight sm:mr-2">
           🧭 <span className="text-blue-600 dark:text-blue-400">Study Compass</span>
         </Link>
-        <nav className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto text-sm">
-          {links.map((l) => {
-            const active =
-              l.label === "This Week"
-                ? pathname.startsWith("/week")
-                : pathname === l.href;
-            return (
-              <Link
-                key={l.label}
-                href={l.href}
-                className={`relative flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${
-                  active
-                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
-                }`}
-              >
-                {l.label}
-                {l.label === "Backlog" && backlogCount > 0 && (
-                  <span className="rounded-full bg-red-500 px-1.5 text-[10px] font-semibold leading-4 text-white">
-                    {backlogCount}
-                  </span>
-                )}
-              </Link>
-            );
-          })}
+        <nav className="hidden min-w-0 flex-1 items-center gap-1 overflow-x-auto text-sm sm:flex">
+          {navLinks}
         </nav>
         {syncState !== "off" && (
           <Link
@@ -88,6 +90,9 @@ export function Nav() {
         )}
         <ThemeToggle />
       </div>
+      <nav className="scrollbar-none flex items-center gap-1 overflow-x-auto px-4 pb-2 text-sm sm:hidden">
+        {navLinks}
+      </nav>
     </header>
   );
 }
