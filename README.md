@@ -3,9 +3,7 @@
 A personal study-plan tracker built with Next.js (App Router), TypeScript, and
 Tailwind. It turns a day-by-day curriculum into a dashboard you actually keep
 up with: daily checklists, streaks, a phase-colored calendar, and a backlog
-that catches anything you miss. The bundled plan is a 17-week AI-engineering
-roadmap, but the app is curriculum-agnostic — all plan data lives in
-`data/curriculum.ts`.
+that catches anything you miss.
 
 ## Features
 
@@ -42,15 +40,3 @@ Optionally, log in with a Supabase magic link to sync across devices:
 
 On login the cloud copy is pulled; afterwards every change is pushed
 automatically (debounced). Without env vars the app silently stays local-only.
-
-## Deploy
-
-Push to GitHub and import the repo on [Vercel](https://vercel.com) — zero
-config. Set the two Supabase env vars in the Vercel project settings if you
-want login/sync.
-
-## Plan data
-
-`data/curriculum.ts` is generated (`npm run generate`) from a local curriculum
-file that isn't committed — treat `data/curriculum.ts` as the source of truth
-in this repo. `data/projects.ts` is maintained by hand.
