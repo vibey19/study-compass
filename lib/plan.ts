@@ -86,59 +86,63 @@ export type PhaseMeta = {
 
 // Literal class strings so Tailwind's compiler sees them.
 // Keys must match the phase names in CURRICULUM.md exactly.
+// Hue order is deliberate: adjacent phases sit next to each other in the
+// phase strip and calendar, so hues alternate cool/warm to keep every
+// neighboring pair distinguishable (validated incl. color-vision-deficiency
+// simulation; dark mode steps down to -600 where -500 is too bright).
 export const PHASE_META: Record<string, PhaseMeta> = {
   "Python Foundations": {
-    dot: "bg-sky-500",
-    fill: "bg-sky-500",
-    badge: "bg-sky-100 text-sky-800 dark:bg-sky-500/15 dark:text-sky-300",
-    cell: "bg-sky-100 hover:bg-sky-200 dark:bg-sky-500/20 dark:hover:bg-sky-500/30",
-    edge: "border-l-sky-500",
+    dot: "bg-blue-500",
+    fill: "bg-blue-500",
+    badge: "bg-blue-100 text-blue-800 dark:bg-blue-500/15 dark:text-blue-300",
+    cell: "bg-blue-100 hover:bg-blue-200 dark:bg-blue-500/20 dark:hover:bg-blue-500/30",
+    edge: "border-l-blue-500",
   },
   "Data Science Toolkit": {
-    dot: "bg-teal-500",
-    fill: "bg-teal-500",
-    badge: "bg-teal-100 text-teal-800 dark:bg-teal-500/15 dark:text-teal-300",
-    cell: "bg-teal-100 hover:bg-teal-200 dark:bg-teal-500/20 dark:hover:bg-teal-500/30",
-    edge: "border-l-teal-500",
-  },
-  "Classic Machine Learning": {
-    dot: "bg-emerald-500",
-    fill: "bg-emerald-500",
+    dot: "bg-emerald-500 dark:bg-emerald-600",
+    fill: "bg-emerald-500 dark:bg-emerald-600",
     badge:
       "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300",
     cell: "bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-500/20 dark:hover:bg-emerald-500/30",
     edge: "border-l-emerald-500",
   },
-  "Deployment & MLOps": {
-    dot: "bg-amber-500",
-    fill: "bg-amber-500",
-    badge: "bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300",
-    cell: "bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30",
-    edge: "border-l-amber-500",
-  },
-  NLP: {
-    dot: "bg-orange-500",
-    fill: "bg-orange-500",
-    badge:
-      "bg-orange-100 text-orange-800 dark:bg-orange-500/15 dark:text-orange-300",
-    cell: "bg-orange-100 hover:bg-orange-200 dark:bg-orange-500/20 dark:hover:bg-orange-500/30",
-    edge: "border-l-orange-500",
-  },
-  "Deep Learning": {
-    dot: "bg-violet-500",
-    fill: "bg-violet-500",
-    badge:
-      "bg-violet-100 text-violet-800 dark:bg-violet-500/15 dark:text-violet-300",
-    cell: "bg-violet-100 hover:bg-violet-200 dark:bg-violet-500/20 dark:hover:bg-violet-500/30",
-    edge: "border-l-violet-500",
-  },
-  "Transformers & GenAI": {
+  "Classic Machine Learning": {
     dot: "bg-fuchsia-500",
     fill: "bg-fuchsia-500",
     badge:
       "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-500/15 dark:text-fuchsia-300",
     cell: "bg-fuchsia-100 hover:bg-fuchsia-200 dark:bg-fuchsia-500/20 dark:hover:bg-fuchsia-500/30",
     edge: "border-l-fuchsia-500",
+  },
+  "Deployment & MLOps": {
+    dot: "bg-amber-500 dark:bg-amber-600",
+    fill: "bg-amber-500 dark:bg-amber-600",
+    badge: "bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300",
+    cell: "bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30",
+    edge: "border-l-amber-500",
+  },
+  NLP: {
+    dot: "bg-teal-500 dark:bg-teal-600",
+    fill: "bg-teal-500 dark:bg-teal-600",
+    badge: "bg-teal-100 text-teal-800 dark:bg-teal-500/15 dark:text-teal-300",
+    cell: "bg-teal-100 hover:bg-teal-200 dark:bg-teal-500/20 dark:hover:bg-teal-500/30",
+    edge: "border-l-teal-500",
+  },
+  "Deep Learning": {
+    dot: "bg-orange-500 dark:bg-orange-600",
+    fill: "bg-orange-500 dark:bg-orange-600",
+    badge:
+      "bg-orange-100 text-orange-800 dark:bg-orange-500/15 dark:text-orange-300",
+    cell: "bg-orange-100 hover:bg-orange-200 dark:bg-orange-500/20 dark:hover:bg-orange-500/30",
+    edge: "border-l-orange-500",
+  },
+  "Transformers & GenAI": {
+    dot: "bg-violet-500",
+    fill: "bg-violet-500",
+    badge:
+      "bg-violet-100 text-violet-800 dark:bg-violet-500/15 dark:text-violet-300",
+    cell: "bg-violet-100 hover:bg-violet-200 dark:bg-violet-500/20 dark:hover:bg-violet-500/30",
+    edge: "border-l-violet-500",
   },
   "LLM Engineering": {
     dot: "bg-rose-500",
@@ -148,10 +152,10 @@ export const PHASE_META: Record<string, PhaseMeta> = {
     edge: "border-l-rose-500",
   },
   "Capstone & Polish": {
-    dot: "bg-slate-500",
-    fill: "bg-slate-500",
-    badge: "bg-slate-200 text-slate-800 dark:bg-slate-500/20 dark:text-slate-300",
-    cell: "bg-slate-200 hover:bg-slate-300 dark:bg-slate-500/25 dark:hover:bg-slate-500/35",
-    edge: "border-l-slate-500",
+    dot: "bg-cyan-500 dark:bg-cyan-600",
+    fill: "bg-cyan-500 dark:bg-cyan-600",
+    badge: "bg-cyan-100 text-cyan-800 dark:bg-cyan-500/15 dark:text-cyan-300",
+    cell: "bg-cyan-100 hover:bg-cyan-200 dark:bg-cyan-500/20 dark:hover:bg-cyan-500/30",
+    edge: "border-l-cyan-500",
   },
 };

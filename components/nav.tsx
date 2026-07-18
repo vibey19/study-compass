@@ -37,7 +37,7 @@ export function Nav() {
     <header className="sticky top-0 z-20 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/80">
       <div className="mx-auto flex w-full max-w-5xl items-center gap-2 px-4 py-3">
         <Link href="/" className="mr-2 shrink-0 text-sm font-bold tracking-tight">
-          🧭 <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-violet-400">Study Compass</span>
+          🧭 <span className="text-blue-600 dark:text-blue-400">Study Compass</span>
         </Link>
         <nav className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto text-sm">
           {links.map((l) => {

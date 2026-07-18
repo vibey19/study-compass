@@ -18,7 +18,7 @@ export function DayCard({
   date?: string;
   isToday?: boolean;
 }) {
-  const { progress, toggleDay, subtasks, toggleSubtask, notes, setNote } =
+  const { progress, toggleDay, subtasks, toggleSubtask, notes, setNote, pushDay } =
     useProgress();
   const done = !!progress[day.id];
   const meta = PHASE_META[day.phase];
@@ -143,6 +143,16 @@ export function DayCard({
           {done ? "✓ Completed" : "Mark day complete"}
         </span>
       </button>
+
+      {isToday && !done && (
+        <button
+          onClick={() => pushDay(day.id)}
+          title="Moves today's plan to tomorrow and shifts every later day by one day. Undo in Settings."
+          className="mt-2 w-full rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-center text-sm font-medium text-amber-900 transition-colors hover:bg-amber-100 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-300 dark:hover:bg-amber-500/20"
+        >
+          Busy today? Push to tomorrow →
+        </button>
+      )}
     </div>
   );
 }

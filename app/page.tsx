@@ -14,7 +14,7 @@ import { DayCard } from "@/components/day-card";
 import { PhaseStrip } from "@/components/phase-strip";
 
 export default function Dashboard() {
-  const { progress, ready, pushDay } = useProgress();
+  const { progress, ready } = useProgress();
   const schedule = useSchedule();
   const [today, setToday] = useState<string | null>(null);
 
@@ -39,16 +39,10 @@ export default function Dashboard() {
       : status.kind === "during"
         ? (status.day ?? status.next)
         : null;
-  const canPush =
-    status.kind === "during" &&
-    status.day &&
-    !status.day.isRestDay &&
-    !progress[status.day.id];
-
   return (
     <div className="space-y-6">
       {/* Status hero */}
-      <section className="rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 p-6 text-white shadow-lg sm:p-8">
+      <section className="rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 p-6 text-white shadow-lg sm:p-8">
         {status.kind === "before" && (
           <>
             <p className="text-sm text-blue-100">
@@ -188,15 +182,6 @@ export default function Dashboard() {
                 ? "Next up"
                 : "Today's plan"}
           </h2>
-          {canPush && status.kind === "during" && status.day && (
-            <button
-              onClick={() => pushDay(status.day!.id)}
-              title="Moves today's plan to tomorrow and shifts every later day by one day. Undo in Settings."
-              className="rounded-xl border border-zinc-300 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:border-amber-400 hover:bg-amber-50 hover:text-amber-800 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-amber-600 dark:hover:bg-amber-950/30 dark:hover:text-amber-300"
-            >
-              Busy today? Push to tomorrow →
-            </button>
-          )}
         </div>
         {focusDay ? (
           <>
