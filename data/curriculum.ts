@@ -3,8 +3,8 @@
 
 export type DayEntry = {
   id: string; // e.g. "w01-d01"
-  week: number; // 1-17
-  dayOfWeek: number; // 1-7 (7 = rest day)
+  week: number; // 1-15
+  dayOfWeek: number; // 1-7 (day 7 = web-dev light day wks 1-14, rest in wk15)
   date: string; // ISO date, e.g. "2026-07-20"
   phase: string;
   focus: string;
@@ -12,6 +12,8 @@ export type DayEntry = {
   resources: string[];
   isRestDay: boolean;
   isProjectDay: boolean; // marked [P] in the curriculum
+  track: "ml" | "web"; // "web" = integrated web-dev light day (former rest day, wks 1-14)
+  isLightDay: boolean; // ~4h light day: web-dev watch/practice, active recovery
 };
 
 export type WeekEntry = {
@@ -54,7 +56,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Python Basics (1h 5m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d02",
@@ -68,7 +72,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Control Flow (49m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d03",
@@ -82,7 +88,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Lists, Tuples, Sets, Dictionaries (2h 10m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d04",
@@ -96,7 +104,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Functions (1h 22m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d05",
@@ -110,7 +120,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Python Practice Problems (2–4 hrs)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d06",
@@ -126,7 +138,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Exception Handling (25m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w01-d07",
@@ -134,11 +148,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-07-26",
         "phase": "Python Foundations",
-        "focus": "Rest",
-        "tasks": "Light review of notes only",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): HTML + CSS",
+        "tasks": "Watch @1.9x (~1h): HTML Crash Course (Mosh) + CSS Crash Course (Sheryians); Practice (2-3h): hand-build one clean page + a flexbox layout. Keep it light — this is your recovery day.",
+        "resources": [
+          "YouTube: HTML Crash Course (Programming with Mosh)",
+          "YouTube: CSS Crash Course (Sheryians)"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -160,7 +179,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Object-Oriented Programming (1h 33m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d02",
@@ -174,7 +195,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Advanced Python (1h 24m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d03",
@@ -190,7 +213,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Memory Management & Garbage Collection (21m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d04",
@@ -204,7 +229,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Git & GitHub (50m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d05",
@@ -218,7 +245,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Flask Framework (1h 36m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d06",
@@ -232,7 +261,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Streamlit (26m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w02-d07",
@@ -240,11 +271,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-08-02",
         "phase": "Python Foundations",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 1/7",
+        "tasks": "Watch @1.9x (~2h): Complete JS Domination v1 — fundamentals, variables, types; Practice (2h): small script drills. Ties into this week's Flask/Streamlit work.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 1/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -266,7 +301,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — NumPy (28m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d02",
@@ -280,7 +317,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Pandas (1h 9m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d03",
@@ -294,7 +333,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Data Visualization (49m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d04",
@@ -308,7 +349,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — SQLite with Python (17m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d05",
@@ -322,7 +365,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Statistics for Machine Learning (7h 30m, part 1/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d06",
@@ -336,7 +381,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Statistics for Machine Learning (part 2/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w03-d07",
@@ -344,11 +391,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-08-09",
         "phase": "Data Science Toolkit",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 2/7",
+        "tasks": "Watch @1.9x (~2h): JS Domination v2 — functions, scope, arrays/objects; Practice (2h): rewrite the drills as functions.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 2/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -370,7 +421,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Statistics for Machine Learning (part 3/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d02",
@@ -384,7 +437,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Statistics for Machine Learning (part 4/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d03",
@@ -398,7 +453,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Feature Engineering & EDA (2h 30m, part 1/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d04",
@@ -412,7 +469,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Feature Engineering & EDA (part 2/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d05",
@@ -424,7 +483,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Pick a dataset; Clean it, documenting every decision; Start EDA",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d06",
@@ -436,7 +497,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Deepen the analysis; Produce 5–8 purposeful visualizations; Run one statistical test that supports a real claim",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w04-d07",
@@ -444,11 +507,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-08-16",
         "phase": "Data Science Toolkit",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 3/7",
+        "tasks": "Watch @1.9x (~2h): JS Domination v3 — the DOM, events; Practice (2h): make a page react to clicks/input.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 3/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -468,7 +535,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Write 3 concrete findings in the README; Polish the notebook; Publish the repo",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d02",
@@ -482,7 +551,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Machine Learning Fundamentals (1h)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d03",
@@ -496,7 +567,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Linear Regression (7h, part 1/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d04",
@@ -510,7 +583,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Linear Regression (part 2/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d05",
@@ -524,7 +599,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Linear Regression (part 3/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d06",
@@ -538,7 +615,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Linear Regression (part 4/4)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w05-d07",
@@ -546,11 +625,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-08-23",
         "phase": "Classic Machine Learning",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 4/7",
+        "tasks": "Watch @1.9x (~2h): JS Domination v4 — array methods, closures; Practice (2h): map/filter/reduce exercises.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 4/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -572,7 +655,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Logistic Regression (2h)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d02",
@@ -586,7 +671,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Support Vector Machines (2h)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d03",
@@ -601,7 +688,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — K-Nearest Neighbors (37m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d04",
@@ -615,7 +704,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Decision Trees (1h 28m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d05",
@@ -630,7 +721,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — AdaBoost (55m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d06",
@@ -645,7 +738,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — XGBoost (1h 4m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w06-d07",
@@ -653,11 +748,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-08-30",
         "phase": "Classic Machine Learning",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 5/7 — async (your gap)",
+        "tasks": "Watch @1.9x (~2h): JS Domination v5 — promises, async/await, the event loop; Practice (2h): fetch from a public API and render it. This is the JS concept you flagged, so don't rush it.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 5/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -679,7 +778,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Unsupervised Learning (3h 45m, part 1/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d02",
@@ -693,7 +794,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Unsupervised Learning (part 2/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d03",
@@ -705,7 +808,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Pick a supervised problem with a clear metric; Scope it; Build a clean sklearn Pipeline (preprocessing → model)",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d04",
@@ -717,7 +822,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Compare 3+ model types with cross-validation; Tune the winner; Record before/after metrics",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d05",
@@ -729,7 +836,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Finalize the best model; Metrics table + \"why this model\" in the README; Publish",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d06",
@@ -741,7 +850,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Build an algorithm cheat sheet: when to use what, key hyperparameters; Redo your 2 weakest topics",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w07-d07",
@@ -749,11 +860,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-09-06",
         "phase": "Classic Machine Learning",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 6/7",
+        "tasks": "Watch @1.9x (~2h): JS Domination v6 — modules, error handling, this/bind; Practice (2h): refactor an earlier script into modules.",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 6/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -775,7 +890,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Docker (1h 40m, part 1/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d02",
@@ -789,7 +906,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Docker (part 2/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d03",
@@ -803,7 +922,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — End-to-End ML Project & AWS Deployment (4h, part 1/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d04",
@@ -817,7 +938,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — End-to-End ML Project & AWS Deployment (part 2/2)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d05",
@@ -829,7 +952,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Serve Project 2's model behind a Flask/FastAPI endpoint; Containerize with Docker; Test locally",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d06",
@@ -841,7 +966,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Deploy the container to AWS (or a free tier host); End-to-end test; Add the live URL to the README",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w08-d07",
@@ -849,17 +976,21 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-09-13",
         "phase": "Deployment & MLOps",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): JS 7/7 + mini-app",
+        "tasks": "Watch @1.9x (~2h): JS Domination v7 — wrap; Build (2h): one small vanilla-JS app end to end (fetch + DOM + async).",
+        "resources": [
+          "YouTube: Complete JS Domination (Sheryians) - video 7/7"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
   {
     "week": 9,
-    "title": "MLOps Pipeline",
+    "title": "MLOps (lean) + PyTorch primer",
     "phase": "Deployment & MLOps",
     "dateRange": "Sep 14–20",
     "days": [
@@ -869,13 +1000,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 1,
         "date": "2026-09-14",
         "phase": "Deployment & MLOps",
-        "focus": "ETL + MongoDB",
-        "tasks": "Watch (≈1h 20m): MLOps — MongoDB + ETL pipeline; Code along (3h)",
+        "focus": "MLflow tracking",
+        "tasks": "Watch (~1h20m): experiment tracking with MLflow; Practice (3h): retro-track your Project 2 runs, log params/metrics/artifacts",
         "resources": [
-          "Udemy — MLOps Pipeline (8h, part 1/6)"
+          "Udemy — MLOps Pipeline (MLflow section)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d02",
@@ -883,13 +1016,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-09-15",
         "phase": "Deployment & MLOps",
-        "focus": "MLflow",
-        "tasks": "Watch (≈1h 20m): experiment tracking with MLflow; Practice (3h): track Project 2 experiments retroactively",
+        "focus": "CI/CD",
+        "tasks": "Watch (~1h20m): GitHub Actions; Practice (3h): add lint+test CI to the Project 2 repo",
         "resources": [
-          "Udemy — MLOps Pipeline (part 2/6)"
+          "Udemy — MLOps Pipeline (CI/CD section)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d03",
@@ -897,13 +1032,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-09-16",
         "phase": "Deployment & MLOps",
-        "focus": "DVC + S3",
-        "tasks": "Watch (≈1h 20m): data/model versioning with DVC + AWS S3; Code along (3h)",
+        "focus": "MLOps overview (skim)",
+        "tasks": "Watch at 1.5x, notes only (~1h30m): DVC+S3, EC2 deploy, BentoML — concepts, not code; Diagram the full pipeline and note what each tool solves (enough to talk about in interviews)",
         "resources": [
-          "Udemy — MLOps Pipeline (part 3/6)"
+          "Udemy — MLOps Pipeline (DVC/EC2/BentoML, skim)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d04",
@@ -911,13 +1048,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 4,
         "date": "2026-09-17",
         "phase": "Deployment & MLOps",
-        "focus": "CI/CD",
-        "tasks": "Watch (≈1h 20m): GitHub Actions; Practice (3h): add lint + test CI to the Project 2 repo",
+        "focus": "PyTorch primer 1",
+        "tasks": "Watch (~2h): CampusX PyTorch — tensors, autograd, the computation graph; Practice (2.5h): tensor ops + a hand-built autograd example",
         "resources": [
-          "Udemy — MLOps Pipeline (part 4/6)"
+          "CampusX — Practical Deep Learning with PyTorch (tensors + autograd)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d05",
@@ -925,13 +1064,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 5,
         "date": "2026-09-18",
         "phase": "Deployment & MLOps",
-        "focus": "EC2 deployment",
-        "tasks": "Watch (≈1h 20m): deploying on EC2; Code along (3h)",
+        "focus": "PyTorch primer 2",
+        "tasks": "Watch (~2h): CampusX PyTorch — nn.Module, optimizers, the training loop, Dataset/DataLoader; Practice (2.5h): rebuild your week-5 linear/logistic model in PyTorch",
         "resources": [
-          "Udemy — MLOps Pipeline (part 5/6)"
+          "CampusX — Practical Deep Learning with PyTorch (nn.Module + training loop)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d06",
@@ -939,13 +1080,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 6,
         "date": "2026-09-19",
         "phase": "Deployment & MLOps",
-        "focus": "BentoML + wrap-up",
-        "tasks": "Watch (≈1h 20m): BentoML — finish the section; Practice (3h): diagram the full pipeline and note what each tool solves",
-        "resources": [
-          "Udemy — MLOps Pipeline (part 6/6)"
-        ],
+        "focus": "Buffer + push",
+        "tasks": "Catch up on anything rushed this week; Push all week-9 work to GitHub with clean READMEs",
+        "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w09-d07",
@@ -953,11 +1094,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-09-20",
         "phase": "Deployment & MLOps",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): React 1/3",
+        "tasks": "Watch @1.9x (~2h): ReactJS Full Course — setup, JSX, components, props/state; Practice (2h): build a couple of components.",
+        "resources": [
+          "YouTube: ReactJS Full Course (Sheryians) - part 1/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -979,7 +1124,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Natural Language Processing (5h 45m, part 1/5)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d02",
@@ -993,7 +1140,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Natural Language Processing (part 2/5)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d03",
@@ -1007,7 +1156,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Natural Language Processing (part 3/5)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d04",
@@ -1021,7 +1172,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Natural Language Processing (part 4/5)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d05",
@@ -1035,7 +1188,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Natural Language Processing (part 5/5)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d06",
@@ -1047,7 +1202,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Polish the classifier end to end; Clean repo + README with metrics; Push to GitHub",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w10-d07",
@@ -1055,17 +1212,21 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-09-27",
         "phase": "NLP",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): React 2/3",
+        "tasks": "Watch @1.9x (~2h): React — hooks (useState/useEffect), lists, forms; Practice (2h): a small interactive component.",
+        "resources": [
+          "YouTube: ReactJS Full Course (Sheryians) - part 2/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
   {
     "week": 11,
-    "title": "Neural Networks & CNNs",
+    "title": "Neural Nets & CNNs (PyTorch)",
     "phase": "Deep Learning",
     "dateRange": "Sep 28–Oct 4",
     "days": [
@@ -1075,13 +1236,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 1,
         "date": "2026-09-28",
         "phase": "Deep Learning",
-        "focus": "ANN 1/4",
-        "tasks": "Watch (≈1h 30m): DL Fundamentals — perceptron, ANN, activation functions; Practice (2.5h): forward pass by hand in NumPy",
+        "focus": "ANN + forward pass",
+        "tasks": "Watch (~1h30m): Krish Naik DL theory — perceptron, activations (concepts only); Practice (2.5h): forward pass by hand in NumPy, then the same net in PyTorch (CampusX ANN)",
         "resources": [
-          "Udemy — Deep Learning Fundamentals (6h, part 1/4)"
+          "Udemy — Deep Learning Fundamentals (theory)",
+          "CampusX — PyTorch (ANN)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d02",
@@ -1089,13 +1253,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-09-29",
         "phase": "Deep Learning",
-        "focus": "Backprop 2/4",
-        "tasks": "Watch (≈1h 30m): backpropagation, loss functions, optimizers; Practice (2.5h): implement a tiny NN in NumPy",
+        "focus": "Backprop",
+        "tasks": "Watch (~1h30m): backprop, loss functions, optimizers; Practice (2.5h): train a tiny NN in PyTorch, watch the loss curve, break it on purpose and explain why",
         "resources": [
-          "Udemy — Deep Learning Fundamentals (part 2/4)"
+          "Udemy — Deep Learning Fundamentals (backprop)",
+          "CampusX — PyTorch (training)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d03",
@@ -1103,13 +1270,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-09-30",
         "phase": "Deep Learning",
-        "focus": "Training 3/4",
-        "tasks": "Watch (≈1h 30m): training deep nets — regularization, dropout, batch norm; Practice (2.5h): experiments in PyTorch",
+        "focus": "Training deep nets",
+        "tasks": "Watch (~1h30m): regularization, dropout, batch norm, early stopping; Practice (2.5h): run these as controlled experiments in PyTorch and record the deltas",
         "resources": [
-          "Udemy — Deep Learning Fundamentals (part 3/4)"
+          "Udemy — Deep Learning Fundamentals (training)",
+          "CampusX — PyTorch (regularization)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d04",
@@ -1117,13 +1287,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 4,
         "date": "2026-10-01",
         "phase": "Deep Learning",
-        "focus": "CNN 4/4",
-        "tasks": "Watch (≈1h 30m): CNNs — finish the section; Practice (2.5h): train a small CNN on MNIST in PyTorch",
+        "focus": "CNNs in PyTorch",
+        "tasks": "Watch (~1h30m): CNN theory — conv, pooling, feature maps; Practice (2.5h): train a small CNN on MNIST/CIFAR in PyTorch (CampusX CNN)",
         "resources": [
-          "Udemy — Deep Learning Fundamentals (part 4/4)"
+          "Udemy — Deep Learning Fundamentals (CNN)",
+          "CampusX — PyTorch (CNN)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d05",
@@ -1131,13 +1304,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 5,
         "date": "2026-10-02",
         "phase": "Deep Learning",
-        "focus": "ANN project",
-        "tasks": "Watch + code along (2h): ANN Practical Project; Re-build it in PyTorch (2h) and compare results",
+        "focus": "Transfer learning",
+        "tasks": "Watch (~2h): CampusX PyTorch — transfer learning with a pretrained backbone; Practice (2h): fine-tune ResNet on a small dataset and compare to from-scratch",
         "resources": [
-          "Udemy — ANN Practical Project (2h)"
+          "CampusX — PyTorch (transfer learning)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d06",
@@ -1145,11 +1320,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 6,
         "date": "2026-10-03",
         "phase": "Deep Learning",
-        "focus": "Project 3",
-        "tasks": "Kick off image classification: pick a dataset; Train a CNN baseline from scratch; Record accuracy",
+        "focus": "Project 3 kickoff",
+        "tasks": "Pick an image dataset; Train a CNN baseline from scratch in PyTorch; Record accuracy",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w11-d07",
@@ -1157,17 +1334,21 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-10-04",
         "phase": "Deep Learning",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): React 3/3 + wire to ML",
+        "tasks": "Watch @1.9x (~2h): React — fetching, structure; Build (2h): a tiny React UI that calls one of your model endpoints (reuses your Project 2/3 API).",
+        "resources": [
+          "YouTube: ReactJS Full Course (Sheryians) - part 3/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
   {
     "week": 12,
-    "title": "Project 3 + RNNs",
+    "title": "Project 3 + RNNs (PyTorch)",
     "phase": "Deep Learning",
     "dateRange": "Oct 5–11",
     "days": [
@@ -1178,10 +1359,12 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-05",
         "phase": "Deep Learning",
         "focus": "Project 3",
-        "tasks": "Fine-tune a pretrained backbone (e.g. ResNet18) on your dataset; Compare against the baseline",
+        "tasks": "Fine-tune a pretrained backbone (ResNet18) on your dataset in PyTorch; Compare against the baseline — the delta is the result",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d02",
@@ -1190,10 +1373,12 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-06",
         "phase": "Deep Learning",
         "focus": "Project 3 wrap",
-        "tasks": "Confusion matrix + misclassified examples discussed; Small Gradio/Streamlit demo; Publish",
+        "tasks": "Confusion matrix + a few misclassified examples discussed; Small Gradio/Streamlit demo; Publish",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d03",
@@ -1201,13 +1386,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-10-07",
         "phase": "Deep Learning",
-        "focus": "RNN 1/4",
-        "tasks": "Watch (≈1h 40m): RNN fundamentals; Practice (2.5h): char-level RNN toy example in PyTorch",
+        "focus": "RNN fundamentals",
+        "tasks": "Watch (~1h40m): Krish Naik RNN theory; Practice (2.5h): char-level RNN in PyTorch (CampusX RNN)",
         "resources": [
-          "Udemy — Recurrent Neural Networks (6h 30m, part 1/4)"
+          "Udemy — Recurrent Neural Networks (theory)",
+          "CampusX — PyTorch (RNN)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d04",
@@ -1215,13 +1403,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 4,
         "date": "2026-10-08",
         "phase": "Deep Learning",
-        "focus": "LSTM 2/4",
-        "tasks": "Watch (≈1h 40m): LSTM; Practice (2.5h): LSTM on a text dataset",
+        "focus": "LSTM",
+        "tasks": "Watch (~1h40m): LSTM; Practice (2.5h): LSTM on a text dataset in PyTorch",
         "resources": [
-          "Udemy — Recurrent Neural Networks (part 2/4)"
+          "Udemy — Recurrent Neural Networks (LSTM)",
+          "CampusX — PyTorch (LSTM)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d05",
@@ -1229,13 +1420,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 5,
         "date": "2026-10-09",
         "phase": "Deep Learning",
-        "focus": "GRU 3/4",
-        "tasks": "Watch (≈1h 35m): GRU, bidirectional RNN; Practice (2.5h): compare LSTM vs GRU",
+        "focus": "GRU + bidirectional",
+        "tasks": "Watch (~1h35m): GRU, bidirectional RNNs; Practice (2.5h): compare LSTM vs GRU in PyTorch",
         "resources": [
-          "Udemy — Recurrent Neural Networks (part 3/4)"
+          "Udemy — Recurrent Neural Networks (GRU)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d06",
@@ -1243,13 +1436,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 6,
         "date": "2026-10-10",
         "phase": "Deep Learning",
-        "focus": "RNN wrap 4/4",
-        "tasks": "Watch (≈1h 35m): finish the RNN section; Practice (2.5h): sequence model on your week-10 NLP dataset",
+        "focus": "RNN wrap",
+        "tasks": "Watch (~1h35m): finish the RNN section; Practice (2.5h): sequence model on your week-10 NLP dataset, in PyTorch",
         "resources": [
-          "Udemy — Recurrent Neural Networks (part 4/4)"
+          "Udemy — Recurrent Neural Networks (wrap)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w12-d07",
@@ -1257,11 +1452,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-10-11",
         "phase": "Deep Learning",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): Backend 1/3",
+        "tasks": "Watch @1.9x (~2.5h): Backend series — Node.js, Express, routing/middleware; Practice (1.5h): a couple of Express routes.",
+        "resources": [
+          "YouTube: Backend Node/Express/MongoDB (CampusX) - part 1/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -1283,7 +1482,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Seq2Seq & Attention Mechanism (1h 10m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d02",
@@ -1297,7 +1498,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Transformers (4h 20m, part 1/3)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d03",
@@ -1311,7 +1514,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Transformers (part 2/3)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d04",
@@ -1325,7 +1530,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Transformers (part 3/3)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d05",
@@ -1339,7 +1546,9 @@ export const roadmap: WeekEntry[] = [
           "Udemy — Claude Code & AI Agents (2h 37m)"
         ],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d06",
@@ -1351,7 +1560,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Build a small tool-using agent of your own; Write the 1-page design for Project 4",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w13-d07",
@@ -1359,11 +1570,15 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-10-18",
         "phase": "Transformers & GenAI",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): Backend 2/3",
+        "tasks": "Watch @1.9x (~2.5h): Backend — MongoDB, schemas, CRUD; Practice (1.5h): a small CRUD API.",
+        "resources": [
+          "YouTube: Backend Node/Express/MongoDB (CampusX) - part 2/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
@@ -1383,7 +1598,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Design the app; Implement document ingestion, chunking, embeddings",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d02",
@@ -1395,7 +1612,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Vector store (Chroma/FAISS) + retrieval + LLM generation — working RAG v1",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d03",
@@ -1407,7 +1626,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Add at least one agent/tool-use capability beyond plain RAG",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d04",
@@ -1419,7 +1640,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Build a small evaluation set (questions + expected answers); Score the app; Fix the worst failures",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d05",
@@ -1431,7 +1654,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Build a Streamlit UI so it's demoable",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d06",
@@ -1443,7 +1668,9 @@ export const roadmap: WeekEntry[] = [
         "tasks": "Deploy to a public URL (HF Spaces / Streamlit Cloud / Render)",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w14-d07",
@@ -1451,287 +1678,121 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-10-25",
         "phase": "LLM Engineering",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "focus": "Web-dev (light 4h): Backend 3/3 — full stack",
+        "tasks": "Watch @1.9x (~2.5h): Backend — connecting front to back, auth basics; Build (1.5h): wire React front + Express/Mongo back into one small app. Any spillover goes to the Nov 1-15 runway.",
+        "resources": [
+          "YouTube: Backend Node/Express/MongoDB (CampusX) - part 3/3"
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "track": "web",
+        "isLightDay": true
       }
     ]
   },
   {
     "week": 15,
-    "title": "Project 4 Polish + Revision",
-    "phase": "LLM Engineering",
-    "dateRange": "Oct 26–Nov 1",
+    "title": "Project 4 → Flagship/Capstone + Wrap-up",
+    "phase": "Capstone & Polish",
+    "dateRange": "Oct 26–31 (final week)",
     "days": [
       {
         "id": "w15-d01",
         "week": 15,
         "dayOfWeek": 1,
         "date": "2026-10-26",
-        "phase": "LLM Engineering",
-        "focus": "Hardening",
-        "tasks": "Add logging and error handling to Project 4; Note cost/latency behavior",
+        "phase": "Capstone & Polish",
+        "focus": "Harden Project 4",
+        "tasks": "Add logging + error handling to Project 4; Note cost/latency behaviour; Write the 1-page design spec retroactively (problem, data, models, success criteria) so P4 doubles as the capstone",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d02",
         "week": 15,
         "dayOfWeek": 2,
         "date": "2026-10-27",
-        "phase": "LLM Engineering",
-        "focus": "CI + docs",
-        "tasks": "GitHub Actions for lint/test; README with architecture diagram",
+        "phase": "Capstone & Polish",
+        "focus": "CI + architecture docs",
+        "tasks": "GitHub Actions for lint/test; README with an architecture diagram; \"Design decisions\" section — what you chose, what you rejected, and why (this is the capstone deliverable, applied to P4)",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d03",
         "week": 15,
         "dayOfWeek": 3,
         "date": "2026-10-28",
-        "phase": "LLM Engineering",
-        "focus": "Demo",
-        "tasks": "Record a demo GIF/video; Final publish",
+        "phase": "Capstone & Polish",
+        "focus": "Deploy + demo",
+        "tasks": "Confirm the app is live at a public URL; Record a demo GIF/video; Final publish",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": true
+        "isProjectDay": true,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d04",
         "week": 15,
         "dayOfWeek": 4,
         "date": "2026-10-29",
-        "phase": "LLM Engineering",
-        "focus": "Course catch-up",
-        "tasks": "Finish any Udemy sections you skipped or rushed; Clear the backlog",
+        "phase": "Capstone & Polish",
+        "focus": "Course backlog",
+        "tasks": "Finish any Udemy sections you skipped or rushed; Clear the backlog so nothing is left half-understood",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d05",
         "week": 15,
         "dayOfWeek": 5,
         "date": "2026-10-30",
-        "phase": "LLM Engineering",
-        "focus": "Revision",
-        "tasks": "Revisit transformers + MLOps notes; Explain both out loud or in writing (interview practice)",
+        "phase": "Capstone & Polish",
+        "focus": "Revision (interview rehearsal)",
+        "tasks": "Revisit transformers + MLOps notes; Explain both out loud or in writing; Identify your weakest 2–3 topics for the post-plan runway",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d06",
         "week": 15,
         "dayOfWeek": 6,
         "date": "2026-10-31",
-        "phase": "LLM Engineering",
-        "focus": "Capstone prep",
-        "tasks": "Shortlist 2–3 capstone ideas; Check data availability; Pick one",
+        "phase": "Capstone & Polish",
+        "focus": "Portfolio polish — DONE",
+        "tasks": "Pin your 5 best repos; Every README: what it does, how to run it, stack, results; Confirm all projects are live, working, and documented end to end. Syllabus complete.",
         "resources": [],
         "isRestDay": false,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       },
       {
         "id": "w15-d07",
         "week": 15,
         "dayOfWeek": 7,
         "date": "2026-11-01",
-        "phase": "LLM Engineering",
-        "focus": "Rest",
-        "tasks": "",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
-      }
-    ]
-  },
-  {
-    "week": 16,
-    "title": "Capstone Project",
-    "phase": "Capstone & Polish",
-    "dateRange": "Nov 2–8",
-    "days": [
-      {
-        "id": "w16-d01",
-        "week": 16,
-        "dayOfWeek": 1,
-        "date": "2026-11-02",
-        "phase": "Capstone & Polish",
-        "focus": "Scope",
-        "tasks": "Write a 1-page spec before any code: problem, data, models, success criteria",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d02",
-        "week": 16,
-        "dayOfWeek": 2,
-        "date": "2026-11-03",
-        "phase": "Capstone & Polish",
-        "focus": "Build core",
-        "tasks": "Core data/model pipeline",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d03",
-        "week": 16,
-        "dayOfWeek": 3,
-        "date": "2026-11-04",
-        "phase": "Capstone & Polish",
-        "focus": "Build core",
-        "tasks": "Continue the core build; Integrate the DL/GenAI layer",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d04",
-        "week": 16,
-        "dayOfWeek": 4,
-        "date": "2026-11-05",
-        "phase": "Capstone & Polish",
-        "focus": "Testing & eval",
-        "tasks": "Test thoroughly; Evaluate against your own success criteria",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d05",
-        "week": 16,
-        "dayOfWeek": 5,
-        "date": "2026-11-06",
-        "phase": "Capstone & Polish",
-        "focus": "Deployment",
-        "tasks": "Deploy; Get it live",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d06",
-        "week": 16,
-        "dayOfWeek": 6,
-        "date": "2026-11-07",
-        "phase": "Capstone & Polish",
-        "focus": "Documentation",
-        "tasks": "README, architecture diagram, demo GIF/video; Write up the design decisions",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w16-d07",
-        "week": 16,
-        "dayOfWeek": 7,
-        "date": "2026-11-08",
         "phase": "Capstone & Polish",
         "focus": "Rest",
         "tasks": "",
         "resources": [],
         "isRestDay": true,
-        "isProjectDay": false
-      }
-    ]
-  },
-  {
-    "week": 17,
-    "title": "Final Polish",
-    "phase": "Capstone & Polish",
-    "dateRange": "Nov 9–15",
-    "days": [
-      {
-        "id": "w17-d01",
-        "week": 17,
-        "dayOfWeek": 1,
-        "date": "2026-11-09",
-        "phase": "Capstone & Polish",
-        "focus": "Self-assessment",
-        "tasks": "Identify your weakest 2–3 course topics; Rewatch those sections and practice",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d02",
-        "week": 17,
-        "dayOfWeek": 2,
-        "date": "2026-11-10",
-        "phase": "Capstone & Polish",
-        "focus": "GitHub polish",
-        "tasks": "Pin your 5 best repos; Every README: what it does, how to run it, stack, results",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d03",
-        "week": 17,
-        "dayOfWeek": 3,
-        "date": "2026-11-11",
-        "phase": "Capstone & Polish",
-        "focus": "Code quality pass",
-        "tasks": "Refactor one older project; Add docstrings/tests you skipped the first time",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d04",
-        "week": 17,
-        "dayOfWeek": 4,
-        "date": "2026-11-12",
-        "phase": "Capstone & Polish",
-        "focus": "Buffer",
-        "tasks": "Catch-up day for anything delayed earlier in the plan",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d05",
-        "week": 17,
-        "dayOfWeek": 5,
-        "date": "2026-11-13",
-        "phase": "Capstone & Polish",
-        "focus": "Buffer",
-        "tasks": "Catch-up day",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d06",
-        "week": 17,
-        "dayOfWeek": 6,
-        "date": "2026-11-14",
-        "phase": "Capstone & Polish",
-        "focus": "Final check",
-        "tasks": "Confirm all 5 projects are live, working, and documented end to end",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false
-      },
-      {
-        "id": "w17-d07",
-        "week": 17,
-        "dayOfWeek": 7,
-        "date": "2026-11-15",
-        "phase": "Capstone & Polish",
-        "focus": "Done",
-        "tasks": "Ready for the hiring cycle",
-        "resources": [],
-        "isRestDay": true,
-        "isProjectDay": false
+        "isProjectDay": false,
+        "track": "ml",
+        "isLightDay": false
       }
     ]
   }

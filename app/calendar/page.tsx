@@ -90,12 +90,14 @@ export default function CalendarPage() {
                 const isToday = iso === today;
                 const base = entry.isRestDay
                   ? "bg-zinc-100 text-zinc-400 dark:bg-zinc-800/60 dark:text-zinc-500"
-                  : `${PHASE_META[entry.phase].cell} text-zinc-800 dark:text-zinc-200`;
+                  : entry.isLightDay
+                    ? "bg-zinc-100 text-zinc-500 hover:bg-zinc-200 dark:bg-zinc-800/60 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                    : `${PHASE_META[entry.phase].cell} text-zinc-800 dark:text-zinc-200`;
                 return (
                   <Link
                     key={i}
                     href={`/week/${entry.week}`}
-                    title={`${iso} — ${entry.isRestDay ? "Rest" : entry.focus}${done ? " ✓" : ""}`}
+                    title={`${iso} — ${entry.isRestDay ? "Rest" : entry.isLightDay ? `Web-dev light: ${entry.focus}` : entry.focus}${done ? " ✓" : ""}`}
                     className={`relative flex aspect-square items-center justify-center rounded-md text-xs transition-transform hover:scale-110 ${base} ${
                       isToday ? "ring-2 ring-blue-500" : ""
                     }`}
@@ -121,7 +123,7 @@ export default function CalendarPage() {
         ))}
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-          Rest day
+          Rest / web-dev light day
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-zinc-900/60 dark:bg-white/70" />

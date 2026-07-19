@@ -46,7 +46,7 @@ export default function Dashboard() {
         {status.kind === "before" && (
           <>
             <p className="text-sm text-blue-100">
-              17-week AI engineer roadmap · ends {formatDate(schedule.end)}
+              15-week AI engineer roadmap · ends {formatDate(schedule.end)}
             </p>
             <h1 className="mt-1 text-3xl font-bold tracking-tight">
               Starts {formatDate(schedule.start)}, 2026

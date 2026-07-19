@@ -83,8 +83,8 @@ export const projects: ProjectEntry[] = [
     id: "capstone",
     number: 5,
     title: "Capstone — Combined Project",
-    weeks: [16],
-    weeksLabel: "Week 16",
+    weeks: [15],
+    weeksLabel: "Week 15 (folded into Project 4)",
     goal: "One coherent application that ties classic ML and DL/GenAI together, showing you can architect a small system, not just individual models.",
     deliverables: [
       "1-page design spec written before you start building",

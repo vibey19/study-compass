@@ -6,7 +6,7 @@ import { Nav } from "@/components/nav";
 export const metadata: Metadata = {
   title: "Study Compass",
   description:
-    "Personal progress tracker for a 17-week AI engineer roadmap — courses, projects, streaks, and schedule.",
+    "Personal progress tracker for a 15-week AI engineer roadmap — courses, projects, streaks, and schedule.",
 };
 
 // Applies the saved theme before first paint to avoid a light-mode flash.

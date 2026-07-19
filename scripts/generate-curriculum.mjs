@@ -27,7 +27,7 @@ for (const raw of md.split("\n")) {
     phase = m[1].trim();
     continue;
   }
-  if ((m = line.match(/^### Week (\d+) \(([^)]+)\)(?:\s*—\s*(.+))?$/))) {
+  if ((m = line.match(/^### Week (\d+) \((.+?)\)(?:\s*—\s*(.+))?$/))) {
     if (!phase) throw new Error(`Week ${m[1]} appears before any phase header`);
     cur = {
       week: Number(m[1]),
@@ -60,13 +60,15 @@ for (const raw of md.split("\n")) {
 
     const clean = (s) => (s === "—" || s === "-" ? "" : s);
     const isProjectDay = /\[P\]/.test(focusRaw);
+    const isWebLightDay = /\[W\]/.test(focusRaw);
     const focus = focusRaw
       .replace(/\*\*/g, "")
       .replace(/\[P\]/g, "")
+      .replace(/\[W\]/g, "")
       .replace(/\s+/g, " ")
       .trim();
     const resources = clean(resourcesRaw)
-      ? clean(resourcesRaw).split(/\s\+\s/).map((s) => s.trim()).filter(Boolean)
+      ? clean(resourcesRaw).split(/\s·\s/).map((s) => s.trim()).filter(Boolean)
       : [];
 
     cur.days.push({
@@ -78,8 +80,10 @@ for (const raw of md.split("\n")) {
       focus,
       tasks: clean(tasksRaw),
       resources,
-      isRestDay: dayOfWeek === 7,
+      isRestDay: dayOfWeek === 7 && !isWebLightDay,
       isProjectDay,
+      track: isWebLightDay ? "web" : "ml",
+      isLightDay: isWebLightDay,
     });
   }
 }
@@ -88,8 +92,8 @@ for (const raw of md.split("\n")) {
 const dayCount = weeks.reduce((n, w) => n + w.days.length, 0);
 const phases = [...new Set(weeks.map((w) => w.phase))];
 const projectDays = weeks.flatMap((w) => w.days).filter((d) => d.isProjectDay).length;
-if (weeks.length !== 17) throw new Error(`Expected 17 weeks, got ${weeks.length}`);
-if (dayCount !== 119) throw new Error(`Expected 119 days, got ${dayCount}`);
+if (weeks.length !== 15) throw new Error(`Expected 15 weeks, got ${weeks.length}`);
+if (dayCount !== 105) throw new Error(`Expected 105 days, got ${dayCount}`);
 for (const w of weeks) {
   if (w.days.length !== 7) throw new Error(`Week ${w.week} has ${w.days.length} days`);
 }
@@ -102,8 +106,8 @@ const banner = `// AUTO-GENERATED from CURRICULUM.md by scripts/generate-curricu
 const out = `${banner}
 export type DayEntry = {
   id: string; // e.g. "w01-d01"
-  week: number; // 1-17
-  dayOfWeek: number; // 1-7 (7 = rest day)
+  week: number; // 1-15
+  dayOfWeek: number; // 1-7 (day 7 = web-dev light day wks 1-14, rest in wk15)
   date: string; // ISO date, e.g. "2026-07-20"
   phase: string;
   focus: string;
@@ -111,6 +115,8 @@ export type DayEntry = {
   resources: string[];
   isRestDay: boolean;
   isProjectDay: boolean; // marked [P] in the curriculum
+  track: "ml" | "web"; // "web" = integrated web-dev light day (former rest day, wks 1-14)
+  isLightDay: boolean; // ~4h light day: web-dev watch/practice, active recovery
 };
 
 export type WeekEntry = {

@@ -62,6 +62,11 @@ export function DayCard({
         </span>
         <span className="flex items-center gap-2">
           {isToday && <span className="font-semibold text-blue-500">Today</span>}
+          {day.isLightDay && (
+            <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+              🌐 web-dev · light
+            </span>
+          )}
           {day.isProjectDay && (
             <Link
               href={project ? `/projects#${project.id}` : "/projects"}
