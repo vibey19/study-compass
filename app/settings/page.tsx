@@ -133,9 +133,14 @@ export default function SettingsPage() {
       <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
         <h2 className="font-semibold">Schedule</h2>
         <p className="mt-1 text-sm text-zinc-500">
-          The plan currently ends <strong>{formatDate(schedule.end)}, 2026</strong>
+          The plan currently ends <strong>{formatDate(schedule.end)}, 2026</strong>.
+          It's elastic — finishing days early pulls this date closer
+          automatically, and an incomplete day quietly slides to today
+          instead of piling up as overdue
+          {schedule.drift !== 0 &&
+            ` (currently ${Math.abs(schedule.drift)} day${Math.abs(schedule.drift) === 1 ? "" : "s"} ${schedule.drift > 0 ? "behind" : "ahead of"} the original calendar)`}
           {shifts.length > 0 &&
-            ` — shifted ${shifts.reduce((n, s) => n + s.days, 0)} day(s) via "Push to tomorrow"`}
+            `, on top of ${shifts.reduce((n, s) => n + s.days, 0)} day(s) shifted manually via "Push to tomorrow"`}
           .
         </p>
         {shifts.length > 0 && (

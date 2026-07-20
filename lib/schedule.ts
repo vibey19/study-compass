@@ -1,8 +1,20 @@
 // The schedule layer: curriculum dates are fixed in data/curriculum.ts, but
-// the user can push days ("shifts"). Every day's *effective* date = its base
-// position + all shifts that start at or before it, so one push cascades
-// through the rest of the plan. All date-aware UI reads from a Schedule.
-import { useMemo } from "react";
+// the plan is elastic. Two things move it off that fixed baseline:
+//  - manual "shifts": the user explicitly pushes a day (and everything
+//    after it) later, e.g. "Push to tomorrow".
+//  - automatic "drift": a single number, recomputed fresh every time from
+//    progress, comparing how many study days *should* be done by today
+//    (per the original fixed calendar) against how many actually are.
+//    Ahead of pace → negative drift → the whole remaining plan (and its
+//    finish date) pulls earlier. Behind pace → positive drift → it pushes
+//    later. Because it's recomputed from scratch each time rather than
+//    logged as an event, unchecking a day you jumped ahead on unwinds it
+//    automatically, and a day you never get to keeps sliding to "today"
+//    instead of piling up as overdue.
+// Every day's *effective* date = its base position + drift + all manual
+// shifts that start at or before it. All date-aware UI reads from a
+// Schedule.
+import { useEffect, useMemo, useState } from "react";
 import type { DayEntry } from "@/data/curriculum";
 import {
   DAY_MS,
@@ -19,14 +31,33 @@ export type Schedule = {
   idToDate: Record<string, string>;
   start: string;
   end: string;
+  /** calendar days the plan has moved vs. its original fixed dates (negative = pulled earlier/ahead) */
+  drift: number;
   dateOf: (id: string) => string;
   dayOn: (iso: string) => DayEntry | null;
 };
 
 const indexOfId = new Map(allDays.map((d, i) => [d.id, i] as const));
 
-export function buildSchedule(shifts: ShiftEntry[]): Schedule {
-  const offsets = new Array<number>(allDays.length).fill(0);
+/**
+ * Positive when behind pace (fewer study days completed than the original
+ * calendar has scheduled by `today`), negative when ahead. Pure function of
+ * progress + today, so it's always current — never a log to replay.
+ */
+export function computeDrift(
+  progress: Record<string, boolean>,
+  today = todayISO()
+): number {
+  const scheduledSoFar = studyDays.filter((d) => d.date <= today).length;
+  const completed = studyDays.filter((d) => progress[d.id]).length;
+  return scheduledSoFar - completed;
+}
+
+export function buildSchedule(
+  shifts: ShiftEntry[],
+  driftDays = 0
+): Schedule {
+  const offsets = new Array<number>(allDays.length).fill(driftDays);
   for (const s of shifts) {
     const from = indexOfId.get(s.fromId);
     if (from === undefined) continue;
@@ -44,14 +75,24 @@ export function buildSchedule(shifts: ShiftEntry[]): Schedule {
     idToDate,
     start: idToDate[allDays[0].id],
     end: idToDate[allDays[allDays.length - 1].id],
+    drift: driftDays,
     dateOf: (id) => idToDate[id] ?? "",
     dayOn: (iso) => dateToDay.get(iso) ?? null,
   };
 }
 
 export function useSchedule(): Schedule {
-  const { shifts } = useProgress();
-  return useMemo(() => buildSchedule(shifts), [shifts]);
+  const { shifts, progress } = useProgress();
+  // Date-dependent, so resolved client-side only (see nav.tsx) — otherwise
+  // a statically prerendered page bakes in the build's date as "today".
+  const [today, setToday] = useState<string | null>(null);
+  useEffect(() => {
+    setToday(todayISO());
+  }, []);
+  return useMemo(() => {
+    const drift = computeDrift(progress, today ?? PLAN_START);
+    return buildSchedule(shifts, drift);
+  }, [shifts, progress, today]);
 }
 
 export type PlanStatus =
@@ -92,7 +133,7 @@ export type Stats = {
   percent: number;
   currentStreak: number;
   longestStreak: number;
-  /** completed minus scheduled-so-far study days: 0 = on track, <0 behind, >0 ahead */
+  /** days the plan has moved off its original calendar: 0 = on track, <0 behind, >0 ahead */
   scheduleDelta: number;
 };
 
@@ -130,7 +171,7 @@ export function computeStats(
     percent,
     currentStreak,
     longestStreak,
-    scheduleDelta: completed - past.length,
+    scheduleDelta: -schedule.drift,
   };
 }
 

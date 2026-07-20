@@ -140,18 +140,29 @@ export default function Dashboard() {
             </span>
           </p>
         </div>
-        <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div
+          className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
+          title="Finish date moves automatically: get ahead and it pulls earlier, fall behind and it pushes later."
+        >
           <p className="text-xs uppercase tracking-wide text-zinc-500">
-            Schedule
+            Pace
           </p>
-          <p className="mt-1 text-2xl font-bold">
+          <p
+            className={`mt-1 text-2xl font-bold ${
+              stats.scheduleDelta > 0
+                ? "text-emerald-600 dark:text-emerald-400"
+                : stats.scheduleDelta < 0
+                  ? "text-amber-600 dark:text-amber-400"
+                  : ""
+            }`}
+          >
             {status.kind === "before"
               ? "—"
               : stats.scheduleDelta === 0
                 ? "On track"
                 : stats.scheduleDelta > 0
-                  ? `+${stats.scheduleDelta}d`
-                  : `${stats.scheduleDelta}d`}
+                  ? `${stats.scheduleDelta}d ahead`
+                  : `${-stats.scheduleDelta}d behind`}
           </p>
         </div>
         <Link

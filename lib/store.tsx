@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { todayISO } from "@/lib/plan";
 import { supabase } from "@/lib/supabase";
 
 export type ProjectStatus = "not-started" | "in-progress" | "done";
@@ -18,6 +19,7 @@ export type ShiftEntry = { fromId: string; days: number; at: string };
 
 const KEYS = {
   progress: "roadmap-progress-v1",
+  completedAt: "roadmap-completed-at-v1",
   subtasks: "roadmap-subtasks-v1",
   notes: "roadmap-notes-v1",
   projects: "roadmap-projects-v1",
@@ -41,6 +43,8 @@ type Store = {
   /** false until localStorage has been read on the client */
   ready: boolean;
   progress: BoolMap;
+  /** day id → ISO date it was checked off; drives the elastic schedule */
+  completedAt: StrMap;
   subtasks: BoolMap;
   notes: StrMap;
   projects: ProjectMap;
@@ -101,6 +105,7 @@ const Ctx = createContext<Store | null>(null);
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState<BoolMap>({});
+  const [completedAt, setCompletedAt] = useState<StrMap>({});
   const [subtasks, setSubtasks] = useState<BoolMap>({});
   const [notes, setNotes] = useState<StrMap>({});
   const [projects, setProjects] = useState<ProjectMap>({});
@@ -115,6 +120,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setProgress(load(KEYS.progress, {}));
+    setCompletedAt(load(KEYS.completedAt, {}));
     setSubtasks(load(KEYS.subtasks, {}));
     setNotes(load(KEYS.notes, {}));
     setProjects(load(KEYS.projects, {}));
@@ -125,6 +131,9 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (ready) save(KEYS.progress, progress);
   }, [ready, progress]);
+  useEffect(() => {
+    if (ready) save(KEYS.completedAt, completedAt);
+  }, [ready, completedAt]);
   useEffect(() => {
     if (ready) save(KEYS.subtasks, subtasks);
   }, [ready, subtasks]);
@@ -172,6 +181,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         const d = data?.data as Record<string, unknown> | undefined;
         if (d) {
           if (d.progress) setProgress(d.progress as BoolMap);
+          if (d.completedAt) setCompletedAt(d.completedAt as StrMap);
           if (d.subtasks) setSubtasks(d.subtasks as BoolMap);
           if (d.notes) setNotes(d.notes as StrMap);
           if (d.projects) setProjects(d.projects as ProjectMap);
@@ -194,13 +204,13 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       setSyncState("syncing");
       const { error } = await client.from("roadmap_progress").upsert({
         user_id: userId,
-        data: { progress, subtasks, notes, projects, shifts },
+        data: { progress, completedAt, subtasks, notes, projects, shifts },
         updated_at: new Date().toISOString(),
       });
       setSyncState(error ? "error" : "synced");
     }, 800);
     return () => clearTimeout(t);
-  }, [progress, subtasks, notes, projects, shifts, user?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [progress, completedAt, subtasks, notes, projects, shifts, user?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const signIn = useCallback(async (email: string): Promise<string | null> => {
     if (!supabase) return "Sync is not configured (missing Supabase env vars).";
@@ -223,9 +233,20 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     setSyncState("signed-out");
   }, []);
 
-  const toggleDay = useCallback((id: string) => {
-    setProgress((p) => ({ ...p, [id]: !p[id] }));
-  }, []);
+  const toggleDay = useCallback(
+    (id: string) => {
+      const nowDone = !progress[id];
+      setProgress((p) => ({ ...p, [id]: nowDone }));
+      setCompletedAt((c) => {
+        if (!nowDone) {
+          const { [id]: _, ...rest } = c;
+          return rest;
+        }
+        return { ...c, [id]: todayISO() };
+      });
+    },
+    [progress]
+  );
 
   const toggleSubtask = useCallback((key: string) => {
     setSubtasks((s) => ({ ...s, [key]: !s[key] }));
@@ -261,6 +282,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const resetAll = useCallback(() => {
     setProgress({});
+    setCompletedAt({});
     setSubtasks({});
     setNotes({});
     setProjects({});
@@ -269,8 +291,12 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const exportJSON = useCallback(
     () =>
-      JSON.stringify({ progress, subtasks, notes, projects, shifts }, null, 2),
-    [progress, subtasks, notes, projects, shifts]
+      JSON.stringify(
+        { progress, completedAt, subtasks, notes, projects, shifts },
+        null,
+        2
+      ),
+    [progress, completedAt, subtasks, notes, projects, shifts]
   );
 
   const importJSON = useCallback((json: string): string | null => {
@@ -284,6 +310,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           ? data[k]
           : null;
       const p = pick("progress");
+      const c = pick("completedAt");
       const s = pick("subtasks");
       const n = pick("notes");
       const pr = pick("projects");
@@ -292,6 +319,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         return "File doesn't contain any recognized progress data.";
       }
       if (p) setProgress(p as BoolMap);
+      if (c) setCompletedAt(c as StrMap);
       if (s) setSubtasks(s as BoolMap);
       if (n) setNotes(n as StrMap);
       if (pr) setProjects(pr as ProjectMap);
@@ -307,6 +335,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       value={{
         ready,
         progress,
+        completedAt,
         subtasks,
         notes,
         projects,
