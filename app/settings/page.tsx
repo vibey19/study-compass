@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { allDays, formatDate, formatShort, todayISO } from "@/lib/plan";
 import { useSchedule } from "@/lib/schedule";
-import { useProgress } from "@/lib/store";
+import { PLAN_VERSION, useProgress } from "@/lib/store";
 
 export default function SettingsPage() {
   const {
@@ -17,6 +17,11 @@ export default function SettingsPage() {
     signOut,
     shifts,
     undoLastShift,
+    settings,
+    setSettings,
+    hasLegacyProgress,
+    legacyJSON,
+    dismissLegacyNotice,
   } = useProgress();
   const schedule = useSchedule();
   const [message, setMessage] = useState<string | null>(null);
@@ -34,15 +39,29 @@ export default function SettingsPage() {
     );
   };
 
-  const handleExport = () => {
-    const blob = new Blob([exportJSON()], { type: "application/json" });
+  const download = (json: string, name: string) => {
+    const blob = new Blob([json], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `roadmap-progress-${todayISO()}.json`;
+    a.download = name;
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  const handleExport = () => {
+    download(exportJSON(), `study-compass-${PLAN_VERSION}-${todayISO()}.json`);
     setMessage("Progress exported.");
+  };
+
+  const handleLegacyExport = () => {
+    const json = legacyJSON();
+    if (!json) {
+      setMessage("No previous progress found to export.");
+      return;
+    }
+    download(json, `study-compass-old-plan-${todayISO()}.json`);
+    setMessage("Old progress exported. It's yours to keep — import it any time.");
   };
 
   const handleImport = async (file: File) => {
@@ -53,7 +72,7 @@ export default function SettingsPage() {
   const handleReset = () => {
     if (
       window.confirm(
-        "Reset ALL progress? This clears completed days, sub-tasks, notes, and project statuses. This cannot be undone."
+        "Reset ALL progress? This clears completed days, sub-tasks, notes, proof links, projects, checklists, the DSA log, from-scratch drills, interview prep, applications, weekly reviews and certificates. This cannot be undone."
       )
     ) {
       resetAll();
@@ -69,6 +88,37 @@ export default function SettingsPage() {
         <p className="mt-4 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-800 dark:bg-blue-950/40 dark:text-blue-300">
           {message}
         </p>
+      )}
+
+      {hasLegacyProgress && (
+        <section className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-500/40 dark:bg-amber-500/10">
+          <h2 className="font-semibold text-amber-900 dark:text-amber-300">
+            Progress from the previous plan
+          </h2>
+          <p className="mt-1 text-sm text-amber-900/80 dark:text-amber-200/80">
+            This is a new 10-week plan, and its days reuse the old plan's ids,
+            so it starts from zero rather than inheriting ticks that meant
+            something else. The old progress is still in this browser — export
+            it before you clear anything.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              onClick={handleLegacyExport}
+              className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700"
+            >
+              Export old progress
+            </button>
+            <button
+              onClick={() => {
+                dismissLegacyNotice();
+                setMessage("Notice dismissed.");
+              }}
+              className="rounded-lg border border-amber-400 px-4 py-2 text-sm font-medium text-amber-900 hover:bg-amber-100 dark:border-amber-500/50 dark:text-amber-300 dark:hover:bg-amber-500/20"
+            >
+              Dismiss
+            </button>
+          </div>
+        </section>
       )}
 
       <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
@@ -171,10 +221,32 @@ export default function SettingsPage() {
       </section>
 
       <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+        <h2 className="font-semibold">Daily proof</h2>
+        <p className="mt-1 text-sm text-zinc-500">
+          Rule 4 of the plan is "no commit, no credit". By default completing a
+          day without a proof link only asks for confirmation; turn this on to
+          refuse it outright.
+        </p>
+        <label className="mt-4 flex cursor-pointer items-center gap-2.5 text-sm">
+          <input
+            type="checkbox"
+            checked={settings.requireProof}
+            onChange={() =>
+              setSettings({ requireProof: !settings.requireProof })
+            }
+            disabled={!ready}
+            className="h-4 w-4 accent-emerald-600"
+          />
+          Require a proof link to mark a day complete
+        </label>
+      </section>
+
+      <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
         <h2 className="font-semibold">Backup</h2>
         <p className="mt-1 text-sm text-zinc-500">
-          Progress lives in this browser's localStorage. Export before clearing
-          browser data or switching devices.
+          Progress lives in this browser's localStorage under plan version{" "}
+          <code>{PLAN_VERSION}</code>. Export before clearing browser data or
+          switching devices.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <button
@@ -210,7 +282,8 @@ export default function SettingsPage() {
           Danger zone
         </h2>
         <p className="mt-1 text-sm text-zinc-500">
-          Wipe every completed day, sub-task, note, and project status.
+          Wipe every completed day, sub-task, note, proof link, checklist,
+          log and tracker entry for this plan.
         </p>
         <button
           onClick={handleReset}
