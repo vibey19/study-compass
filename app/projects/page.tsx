@@ -26,7 +26,7 @@ export default function ProjectsPage() {
     <div>
       <h1 className="text-2xl font-bold">Portfolio projects</h1>
       <p className="mt-1 text-sm text-zinc-500">
-        Five projects, each in its own GitHub repo with a real README.
+        Six projects, each in its own GitHub repo with a real README.
       </p>
 
       <div className="mt-6 space-y-4">

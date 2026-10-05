@@ -1,8 +1,12 @@
 import { roadmap, PHASE_NAMES, type DayEntry } from "@/data/curriculum";
 
 export const allDays: DayEntry[] = roadmap.flatMap((w) => w.days);
+/** No day in this plan is a rest day, so this is every day. */
 export const studyDays: DayEntry[] = allDays.filter((d) => !d.isRestDay);
+export const reviewDays: DayEntry[] = allDays.filter((d) => d.track === "review");
+export const bufferDays: DayEntry[] = allDays.filter((d) => d.isBufferDay);
 export const PLAN_START = allDays[0].date;
+export const PLAN_WEEKS = roadmap.length;
 export const DAY_MS = 86400000;
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -76,6 +80,40 @@ export function subtasksOf(day: DayEntry): string[] {
     .filter(Boolean);
 }
 
+
+/** Weekly review and buffer days are light; Saturday is the heavy day. */
+export type DayIntensity = { hours: string; label: string; heavy: boolean };
+
+export function dayIntensity(day: DayEntry): DayIntensity {
+  if (day.track === "review") {
+    return { hours: "light", label: "Lighter weekly review day", heavy: false };
+  }
+  if (day.isBufferDay) {
+    return { hours: "light", label: "Buffer day — catch up on what slipped", heavy: false };
+  }
+  // Weeks run Tue → Mon, so day 5 is the Saturday. Read it off the base
+  // date rather than the day number so a curriculum edit can't desync it.
+  const isSaturday = new Date(toUTC(day.date)).getUTCDay() === 6;
+  return isSaturday
+    ? { hours: "6–7h", label: "Saturday — the heavy day of the week", heavy: true }
+    : { hours: "4–4.5h", label: "Weekday", heavy: false };
+}
+
+/**
+ * The last weekly review day inside a phase — where the stage's done-when
+ * checklist has to be ticked before the next stage starts.
+ */
+export function isPhaseFinalReviewDay(day: DayEntry): boolean {
+  if (day.track !== "review") return false;
+  const inPhase = reviewDays.filter((d) => d.phase === day.phase);
+  return inPhase[inPhase.length - 1]?.id === day.id;
+}
+
+/** The phase that `week` belongs to, or null. */
+export function phaseOfWeek(week: number): string | null {
+  return roadmap.find((w) => w.week === week)?.phase ?? null;
+}
+
 export type PhaseMeta = {
   dot: string;
   fill: string;
@@ -91,14 +129,14 @@ export type PhaseMeta = {
 // neighboring pair distinguishable (validated incl. color-vision-deficiency
 // simulation; dark mode steps down to -600 where -500 is too bright).
 export const PHASE_META: Record<string, PhaseMeta> = {
-  "Python Foundations": {
+  "Python and Tools": {
     dot: "bg-blue-500",
     fill: "bg-blue-500",
     badge: "bg-blue-100 text-blue-800 dark:bg-blue-500/15 dark:text-blue-300",
     cell: "bg-blue-100 hover:bg-blue-200 dark:bg-blue-500/20 dark:hover:bg-blue-500/30",
     edge: "border-l-blue-500",
   },
-  "Data Science Toolkit": {
+  "Data, SQL and Math": {
     dot: "bg-emerald-500 dark:bg-emerald-600",
     fill: "bg-emerald-500 dark:bg-emerald-600",
     badge:
@@ -114,21 +152,21 @@ export const PHASE_META: Record<string, PhaseMeta> = {
     cell: "bg-fuchsia-100 hover:bg-fuchsia-200 dark:bg-fuchsia-500/20 dark:hover:bg-fuchsia-500/30",
     edge: "border-l-fuchsia-500",
   },
-  "Deployment & MLOps": {
+  "Deep Learning and Transformers": {
     dot: "bg-amber-500 dark:bg-amber-600",
     fill: "bg-amber-500 dark:bg-amber-600",
     badge: "bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300",
     cell: "bg-amber-100 hover:bg-amber-200 dark:bg-amber-500/20 dark:hover:bg-amber-500/30",
     edge: "border-l-amber-500",
   },
-  NLP: {
+  "LLMs and RAG": {
     dot: "bg-teal-500 dark:bg-teal-600",
     fill: "bg-teal-500 dark:bg-teal-600",
     badge: "bg-teal-100 text-teal-800 dark:bg-teal-500/15 dark:text-teal-300",
     cell: "bg-teal-100 hover:bg-teal-200 dark:bg-teal-500/20 dark:hover:bg-teal-500/30",
     edge: "border-l-teal-500",
   },
-  "Deep Learning": {
+  "MLOps and Cloud": {
     dot: "bg-orange-500 dark:bg-orange-600",
     fill: "bg-orange-500 dark:bg-orange-600",
     badge:
@@ -136,26 +174,12 @@ export const PHASE_META: Record<string, PhaseMeta> = {
     cell: "bg-orange-100 hover:bg-orange-200 dark:bg-orange-500/20 dark:hover:bg-orange-500/30",
     edge: "border-l-orange-500",
   },
-  "Transformers & GenAI": {
+  "Portfolio and Job Hunt": {
     dot: "bg-violet-500",
     fill: "bg-violet-500",
     badge:
       "bg-violet-100 text-violet-800 dark:bg-violet-500/15 dark:text-violet-300",
     cell: "bg-violet-100 hover:bg-violet-200 dark:bg-violet-500/20 dark:hover:bg-violet-500/30",
     edge: "border-l-violet-500",
-  },
-  "LLM Engineering": {
-    dot: "bg-rose-500",
-    fill: "bg-rose-500",
-    badge: "bg-rose-100 text-rose-800 dark:bg-rose-500/15 dark:text-rose-300",
-    cell: "bg-rose-100 hover:bg-rose-200 dark:bg-rose-500/20 dark:hover:bg-rose-500/30",
-    edge: "border-l-rose-500",
-  },
-  "Capstone & Polish": {
-    dot: "bg-cyan-500 dark:bg-cyan-600",
-    fill: "bg-cyan-500 dark:bg-cyan-600",
-    badge: "bg-cyan-100 text-cyan-800 dark:bg-cyan-500/15 dark:text-cyan-300",
-    cell: "bg-cyan-100 hover:bg-cyan-200 dark:bg-cyan-500/20 dark:hover:bg-cyan-500/30",
-    edge: "border-l-cyan-500",
   },
 };

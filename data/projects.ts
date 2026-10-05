@@ -1,4 +1,5 @@
-// Project specs captured from PROJECTS.md. If PROJECTS.md changes, update this file.
+// Project specs captured from Part C (C2) of CURRICULUM.md. If that file
+// changes, update this one.
 
 export type ProjectEntry = {
   id: string;
@@ -15,88 +16,121 @@ export const projects: ProjectEntry[] = [
   {
     id: "p1",
     number: 1,
-    title: "EDA + Statistical Analysis",
-    weeks: [4, 5],
-    weeksLabel: "Weeks 4–5",
-    goal: "Show you can take a messy real dataset and extract a genuine, defensible insight — not just make plots.",
+    title: "EDA + Insights",
+    weeks: [3],
+    weeksLabel: "Week 3",
+    goal: "Show you can take a messy real dataset and find a real insight, not just make plots.",
     deliverables: [
-      "Data cleaning notebook (document every cleaning decision and why)",
-      "5–8 visualizations that each answer a specific question, not decoration",
-      "One statistical test that supports a real claim (e.g. \"X is significantly associated with Y, p < 0.05\") with a plain-English interpretation",
-      "A written summary: 3 concrete findings, in prose, at the top of the README",
+      "Cleaning notebook with every decision explained",
+      "5 to 8 charts that each answer a question",
+      "5 written findings at the top of the README",
     ],
-    stack: ["pandas", "matplotlib/seaborn", "scipy.stats"],
+    stack: ["pandas", "matplotlib/seaborn"],
   },
   {
     id: "p2",
     number: 2,
-    title: "End-to-End Classic ML Pipeline",
-    weeks: [7, 8],
-    weeksLabel: "Weeks 7–8",
-    goal: "Show you can build a production-shaped ML pipeline, not just call `.fit()` in a notebook.",
+    title: "End-to-End Classic ML",
+    weeks: [5],
+    weeksLabel: "Week 5 · MLflow added in Week 9",
+    goal: "Show you can build a proper ML pipeline, not just call `.fit()`.",
     deliverables: [
-      "A `sklearn.Pipeline` covering preprocessing → model, no manual leakage",
-      "At least 3 model types compared with cross-validation, not just train/test split",
-      "Hyperparameter tuning on the winning model, with before/after metrics",
-      "The trained model served behind a Flask/FastAPI endpoint, containerized with Docker",
-      "README includes a metrics table and a short \"why this model\" justification",
+      "sklearn Pipeline with no leakage",
+      "3 models compared with cross-validation",
+      "Tuned best model",
+      "Error analysis",
+      "Metrics table and why this model",
+      "Later served with FastAPI + Docker and tracked in MLflow",
     ],
-    stack: ["pandas", "scikit-learn", "XGBoost", "Flask/FastAPI", "Docker"],
+    stack: ["pandas", "scikit-learn", "XGBoost", "FastAPI", "Docker", "MLflow"],
   },
   {
     id: "p3",
     number: 3,
-    title: "Computer Vision with Transfer Learning",
-    weeks: [11, 12],
-    weeksLabel: "Weeks 11–12",
-    goal: "Show you can work with deep learning in PyTorch and use pretrained models effectively rather than training everything from zero.",
+    title: "Image Classifier + Tiny GPT",
+    weeks: [6, 7],
+    weeksLabel: "Weeks 6–7",
+    goal: "Show real PyTorch skill and that you understand transformers from the inside.",
     deliverables: [
-      "Baseline: a small CNN trained from scratch, with accuracy reported",
-      "Improved: a pretrained backbone (e.g. ResNet18) fine-tuned on your data, with accuracy reported — the delta is the interesting result",
-      "Confusion matrix + a few misclassified examples shown and briefly discussed",
-      "Simple inference script or small Gradio/Streamlit demo",
+      "Small CNN baseline",
+      "Fine-tuned ResNet18 with the accuracy difference",
+      "Confusion matrix and misclassified examples",
+      "A tiny GPT rebuilt from scratch and trained on your own text",
     ],
-    stack: ["PyTorch", "torchvision", "Gradio (optional)"],
+    stack: ["PyTorch", "torchvision"],
   },
   {
     id: "p4",
     number: 4,
-    title: "RAG / Agent GenAI App — Flagship",
-    weeks: [14, 15],
-    weeksLabel: "Weeks 14–15",
-    goal: "The project that signals \"modern AI engineer,\" not just \"ML practitioner.\" Make it genuinely useful to you so you're motivated to polish it.",
+    title: "Fine-Tuned Text Classifier",
+    weeks: [7],
+    weeksLabel: "Week 7",
+    goal: "Show you know when fine-tuning beats a simple baseline, with numbers.",
     deliverables: [
-      "A working RAG pipeline: ingestion → chunking → embeddings → vector store → retrieval → LLM generation with retrieved context",
-      "At least one tool-use/agent capability beyond plain RAG",
-      "Basic evaluation: test questions with expected answers or quality criteria, and how the app scores",
-      "A simple UI (Streamlit/Gradio) so it's demoable, not just a CLI script",
-      "Deployed and reachable at a public URL",
+      "TF-IDF + logistic regression baseline",
+      "Fine-tuned small transformer",
+      "Results table",
+      "Error analysis",
+    ],
+    stack: ["scikit-learn", "Hugging Face transformers and datasets"],
+  },
+  {
+    id: "p5",
+    number: 5,
+    title: "RAG App (Flagship)",
+    weeks: [8],
+    weeksLabel: "Week 8",
+    goal: 'The project that says "applied AI engineer".',
+    deliverables: [
+      "RAG built without LangChain (chunk, embed, index, retrieve, generate with sources)",
+      "20-question evaluation with retrieval hit rate and answer quality",
+      "One tool the model can call",
+      "Gradio UI",
+      "Architecture diagram",
     ],
     stack: [
-      "LLM API (Anthropic/OpenAI)",
-      "LangChain or plain API calls",
-      "Chroma/FAISS",
-      "Streamlit/Gradio",
+      "sentence-transformers",
+      "FAISS",
+      "an LLM API (free tier) or local model",
+      "Gradio",
     ],
   },
   {
-    id: "capstone",
-    number: 5,
-    title: "Capstone — Combined Project",
-    weeks: [15],
-    weeksLabel: "Week 15 (folded into Project 4)",
-    goal: "One coherent application that ties classic ML and DL/GenAI together, showing you can architect a small system, not just individual models.",
+    id: "p6",
+    number: 6,
+    title: "Production Deploy",
+    weeks: [9],
+    weeksLabel: "Week 9",
+    goal: "Show you can take a model to production, not just a notebook.",
     deliverables: [
-      "1-page design spec written before you start building",
-      "Working, deployed app",
-      "Architecture diagram (even a simple one) in the README",
-      "Short demo video or GIF",
-      "A \"design decisions\" section: what you chose, what you rejected, and why",
+      "P5 (and P2 API) in Docker",
+      "GitHub Actions CI with green badge",
+      "Live on Azure Container Apps",
+      "Latency, cost and error logging",
+      "Evidently drift report",
+      "How-it's-deployed section in README",
     ],
-    stack: ["Your pick — combine classic ML + DL/GenAI from earlier projects"],
+    stack: ["Docker", "FastAPI", "GitHub Actions", "Azure", "MLflow", "Evidently"],
   },
 ];
 
+/** The three to lead the CV with. */
+export const PORTFOLIO_TOP_3 =
+  "Portfolio top 3 for the CV: P5 (with P6 deploy), P2, and P3 or P4.";
+
 export function projectForWeek(week: number): ProjectEntry | null {
   return projects.find((p) => p.weeks.includes(week)) ?? null;
+}
+
+/**
+ * The project a given day belongs to. Weeks 6-7 carry two projects, so an
+ * explicit "Project 4" in the day's focus wins over the week lookup.
+ */
+export function projectForDay(focus: string, week: number): ProjectEntry | null {
+  const n = focus.match(/Project (\d+)/i);
+  if (n) {
+    const byNumber = projects.find((p) => p.number === Number(n[1]));
+    if (byNumber) return byNumber;
+  }
+  return projectForWeek(week);
 }
