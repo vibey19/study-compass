@@ -68,7 +68,8 @@ export default function Dashboard() {
               {status.daysUntil === 1
                 ? "Tomorrow. "
                 : `In ${status.daysUntil} days. `}
-              Use the setup weekend to install tooling and skim the plan.
+              Install Python, VS Code and Git before day 1, and skim the
+              plan.
             </p>
           </>
         )}
