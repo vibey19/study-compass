@@ -2,19 +2,28 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PHASE_META, allDays, formatDate, todayISO } from "@/lib/plan";
+import { DSA_TOTAL_TARGET } from "@/data/tracker";
+import { allDays, formatDate, todayISO } from "@/lib/plan";
 import {
   backlogDays,
   computeStats,
   planStatus,
   useSchedule,
 } from "@/lib/schedule";
+import {
+  applicationStats,
+  certsEarned,
+  dsaProgress,
+  proofCount,
+} from "@/lib/tracker";
 import { useProgress } from "@/lib/store";
 import { DayCard } from "@/components/day-card";
 import { PhaseStrip } from "@/components/phase-strip";
+import { RulesBanner } from "@/components/rules-banner";
+import { StageChecklistCard } from "@/components/stage-checklist-card";
 
 export default function Dashboard() {
-  const { progress, ready } = useProgress();
+  const { progress, proofs, dsa, applications, certs, ready } = useProgress();
   const schedule = useSchedule();
   const [today, setToday] = useState<string | null>(null);
 
@@ -31,6 +40,10 @@ export default function Dashboard() {
   const status = planStatus(schedule, today);
   const stats = computeStats(progress, schedule, today);
   const backlog = backlogDays(progress, schedule, today);
+  const proof = proofCount(progress, proofs);
+  const dsaStats = dsaProgress(dsa);
+  const appStats = applicationStats(applications, today);
+  const earnedCerts = certsEarned(certs);
   const firstDay = allDays[0];
 
   const focusDay =
@@ -183,6 +196,68 @@ export default function Dashboard() {
         </Link>
       </section>
 
+      {/* Tracker tiles */}
+      <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div
+          className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
+          title="Rule 4: no commit, no credit."
+        >
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Days with proof
+          </p>
+          <p className="mt-1 text-2xl font-bold">
+            {proof.withProof}
+            <span className="text-sm font-normal text-zinc-400">
+              /{proof.completed || 0}
+            </span>
+          </p>
+        </div>
+        <Link
+          href="/dsa"
+          className="rounded-2xl border border-zinc-200 bg-white p-4 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+          title="Only problems re-solved from a blank file count."
+        >
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            DSA re-solved
+          </p>
+          <p className="mt-1 text-2xl font-bold">
+            {dsaStats.resolved}
+            <span className="text-sm font-normal text-zinc-400">
+              /{DSA_TOTAL_TARGET}
+            </span>
+          </p>
+        </Link>
+        <Link
+          href="/applications"
+          className="rounded-2xl border border-zinc-200 bg-white p-4 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+        >
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Applied
+          </p>
+          <p className="mt-1 text-2xl font-bold">
+            {appStats.sent}
+            <span className="ml-2 text-sm font-normal text-zinc-400">
+              {appStats.interviews} interview
+              {appStats.interviews === 1 ? "" : "s"}
+            </span>
+          </p>
+        </Link>
+        <Link
+          href="/certifications"
+          className="rounded-2xl border border-zinc-200 bg-white p-4 transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+        >
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Certificates
+          </p>
+          <p className="mt-1 text-2xl font-bold">
+            {earnedCerts}
+            <span className="ml-2 text-sm font-normal text-zinc-400">
+              earned
+            </span>
+          </p>
+        </Link>
+      </section>
+
       {/* Today's plan */}
       <section>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
@@ -230,6 +305,11 @@ export default function Dashboard() {
           </div>
         )}
       </section>
+
+      {/* Current stage's done-when checklist */}
+      {focusDay && <StageChecklistCard phase={focusDay.phase} />}
+
+      <RulesBanner />
 
       {/* Phase overview */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
