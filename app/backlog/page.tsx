@@ -8,7 +8,7 @@ import { useProgress } from "@/lib/store";
 import { InlineMd } from "@/components/inline-md";
 
 export default function BacklogPage() {
-  const { progress, toggleDay, ready } = useProgress();
+  const { progress, requestToggleDay, ready } = useProgress();
   const schedule = useSchedule();
   const [today, setToday] = useState<string | null>(null);
 
@@ -59,7 +59,7 @@ export default function BacklogPage() {
                   <input
                     type="checkbox"
                     checked={false}
-                    onChange={() => toggleDay(d.id)}
+                    onChange={() => requestToggleDay(d.id)}
                     aria-label={`Mark ${d.focus} complete`}
                     className="mt-1 h-4 w-4 shrink-0 accent-emerald-600"
                   />

@@ -1,22 +1,18 @@
-const UDEMY_COURSE_URL =
-  "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/";
+import type { Resource } from "@/data/curriculum";
 
-// "Udemy — …" resources go straight to the course; direct URLs are linked
-// as-is; anything else falls back to a web search for the resource name.
-function hrefFor(resource: string): string {
-  if (/^udemy/i.test(resource)) return UDEMY_COURSE_URL;
-  const url = resource.match(
-    /(?:https?:\/\/)?((?:github\.com|kaggle\.com|youtube\.com|sqlbolt\.com)\/[^\s)]+)/i
-  );
-  if (url) return `https://${url[1]}`;
-  return `https://www.google.com/search?q=${encodeURIComponent(resource)}`;
+// A resource with a URL links straight to it and shows only its name;
+// anything the curriculum lists without a link (a book, a study path)
+// falls back to a web search for the name.
+function hrefFor(resource: Resource): string {
+  if (resource.url) return resource.url;
+  return `https://www.google.com/search?q=${encodeURIComponent(resource.label)}`;
 }
 
 export function ResourceLinks({
   resources,
   className = "mt-2",
 }: {
-  resources: string[];
+  resources: Resource[];
   className?: string;
 }) {
   if (resources.length === 0) return null;
@@ -28,9 +24,10 @@ export function ResourceLinks({
             href={hrefFor(r)}
             target="_blank"
             rel="noreferrer"
+            title={r.url || `Search for "${r.label}"`}
             className="break-words text-blue-600 hover:underline dark:text-blue-400"
           >
-            {r} <span aria-hidden>↗</span>
+            {r.label} <span aria-hidden>↗</span>
           </a>
         </li>
       ))}

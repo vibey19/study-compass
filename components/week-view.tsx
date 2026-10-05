@@ -31,8 +31,8 @@ export function WeekView({ week }: { week: number }) {
   }, [today, w, schedule]);
 
   const meta = PHASE_META[w.phase];
-  const studyCount = w.days.filter((d) => !d.isRestDay).length;
-  const doneCount = w.days.filter((d) => !d.isRestDay && progress[d.id]).length;
+  const studyCount = w.days.length;
+  const doneCount = w.days.filter((d) => progress[d.id]).length;
   const range = `${formatShort(schedule.dateOf(w.days[0].id))} – ${formatShort(
     schedule.dateOf(w.days[w.days.length - 1].id)
   )}`;

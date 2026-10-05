@@ -9,7 +9,7 @@ import { useProgress } from "@/lib/store";
 import { InlineMd } from "@/components/inline-md";
 
 export default function RoadmapPage() {
-  const { progress, toggleDay } = useProgress();
+  const { progress, requestToggleDay } = useProgress();
   const schedule = useSchedule();
   const [open, setOpen] = useState<Record<number, boolean>>({});
   const [today, setToday] = useState<string | null>(null);
@@ -56,7 +56,7 @@ export default function RoadmapPage() {
       <div className="mt-6 space-y-3">
         {roadmap.map((w) => {
           const meta = PHASE_META[w.phase];
-          const study = w.days.filter((d) => !d.isRestDay);
+          const study = w.days;
           const done = study.filter((d) => progress[d.id]).length;
           const isOpen = !!open[w.week];
           const range = `${formatShort(schedule.dateOf(w.days[0].id))} – ${formatShort(schedule.dateOf(w.days[w.days.length - 1].id))}`;
@@ -102,23 +102,17 @@ export default function RoadmapPage() {
                           <tr
                             key={d.id}
                             className={`border-b border-zinc-100 last:border-0 dark:border-zinc-800/60 ${
-                              d.isRestDay
-                                ? "text-zinc-400 dark:text-zinc-500"
-                                : ""
-                            } ${isToday ? "bg-blue-50 dark:bg-blue-950/30" : ""}`}
+                              isToday ? "bg-blue-50 dark:bg-blue-950/30" : ""
+                            }`}
                           >
                             <td className="w-10 px-4 py-2 text-center">
-                              {d.isRestDay ? (
-                                <span title="Rest day">—</span>
-                              ) : (
-                                <input
-                                  type="checkbox"
-                                  checked={isDone}
-                                  onChange={() => toggleDay(d.id)}
-                                  className="accent-emerald-600"
-                                  aria-label={`Mark ${d.focus} complete`}
-                                />
-                              )}
+                              <input
+                                type="checkbox"
+                                checked={isDone}
+                                onChange={() => requestToggleDay(d.id)}
+                                className="accent-emerald-600"
+                                aria-label={`Mark ${d.focus} complete`}
+                              />
                             </td>
                             <td className="whitespace-nowrap px-2 py-2 text-zinc-500">
                               {formatShort(schedule.dateOf(d.id))}
@@ -127,9 +121,14 @@ export default function RoadmapPage() {
                               className={`px-2 py-2 font-medium ${isDone ? "text-zinc-400 line-through dark:text-zinc-500" : ""}`}
                             >
                               {d.focus}
-                              {d.isLightDay && (
+                              {d.track === "review" && (
                                 <span className="ml-2 rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
-                                  web
+                                  review
+                                </span>
+                              )}
+                              {d.isBufferDay && (
+                                <span className="ml-2 rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+                                  buffer
                                 </span>
                               )}
                               {d.isProjectDay && (
