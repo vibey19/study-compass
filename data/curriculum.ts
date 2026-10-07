@@ -291,7 +291,7 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-17",
         "phase": "Python and Tools",
         "focus": "CS50P final project: CLI tool",
-        "tasks": "(Saturday, 6-7h) Plan (30m): pick a CLI tool (expense tracker, habit logger, quiz app); Code (5h): build it with classes, file storage and at least 5 pytest tests; Write (1h): README + submit as your CS50P final project to claim the free certificate; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "(Saturday, 6-7h) Plan (30m): pick a CLI tool (expense tracker, habit logger, quiz app); Code (5h): build it with classes, file storage and at least 5 pytest tests; Write (1h): README + submit as your CS50P final project to claim the free CS50 Certificate (not the paid edX one); Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
             "label": "CS50P",
@@ -357,12 +357,20 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 1,
         "date": "2026-10-20",
         "phase": "Data, SQL and Math",
-        "focus": "pandas deeper",
-        "tasks": "Course (2h): Kaggle Pandas lessons 4 to 6 (grouping, types, renaming, combining); Code (2h): load a real CSV and answer 10 questions about it with pandas only; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "pandas + descriptive stats",
+        "tasks": "Watch (1h20m at 1.75x): bootcamp descriptive stats, \"What is Statistics And its Application\" to \"Correlation And Covariance\" (13 videos); Course (2h): Kaggle Pandas lessons 4 to 6 (grouping, types, renaming, combining); Code (1h): mean, median, variance, std, percentiles and correlation by hand in NumPy for one column, check against pandas describe() and corr(); Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Kaggle Learn Pandas",
             "url": "https://www.kaggle.com/learn/pandas"
+          },
+          {
+            "label": "NumPy beginner guide",
+            "url": "https://numpy.org/doc/stable/user/absolute_beginners.html"
           }
         ],
         "isRestDay": false,
@@ -377,9 +385,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-10-21",
         "phase": "Data, SQL and Math",
-        "focus": "Visualization",
-        "tasks": "Course (2h): Kaggle Data Visualization; Code (2h): 6 charts on yesterday's dataset, each answering one clear question; Claim the Kaggle Pandas + Data Visualization certificates; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Probability + visualization",
+        "tasks": "Watch (1h45m at 1.75x): bootcamp probability and distributions, \"Addition Rule (For Mutual And Non Mutual Exclusive Events)\" to \"Pareto Distribution\" (13 videos); Course (2h): Kaggle Data Visualization; Code (1h): 4 charts on yesterday's dataset, each answering one clear question; Claim the Kaggle Pandas + Data Visualization certificates; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Kaggle Learn Data Visualization",
             "url": "https://www.kaggle.com/learn/data-visualization"
@@ -446,11 +458,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-24",
         "phase": "Data, SQL and Math",
         "focus": "Project 1: EDA + stats",
-        "tasks": "(Saturday, 6-7h) Watch (1h): StatQuest on mean, variance, normal distribution, p-values; Pick a messy public dataset; Code (5h): clean it (document every decision), charts, 5 written findings; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "(Saturday, 6-7h) Watch (1h35m at 1.75x): bootcamp hypothesis testing, \"Central Limit Theorem\" to \"Partioning Of Variance In Annova\" (17 videos); Watch (50m at 1.75x): bootcamp feature engineering, \"Handling Missing Values\" to \"Target Guided Ordinal Encoding\" (7 videos); Pick a messy public dataset (not one used in the bootcamp); Code (4.5h): clean it with every decision documented, handle missing values, outliers and encoding, make charts, run one hypothesis test with a plain-English result, write 5 findings; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "StatQuest",
-            "url": "https://www.youtube.com/@statquest"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Kaggle Learn Pandas",
@@ -512,15 +524,15 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-27",
         "phase": "Classic Machine Learning",
         "focus": "First models",
-        "tasks": "Course (2.5h): Kaggle Intro to ML, all lessons + claim the certificate; Watch (30m): StatQuest bias and variance; SQL (30m): Kaggle Advanced SQL lesson 1; DSA (30m): NeetCode Arrays & Hashing, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (35m at 1.75x): bootcamp ML intro, \"Introduction\" to \"Instance based Vs Model based learning\" (5 videos); Course (2.5h): Kaggle Intro to ML, all lessons + claim the certificate; SQL (30m): Kaggle Advanced SQL lesson 1; DSA (30m): NeetCode Arrays & Hashing, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Kaggle Learn Intro to ML",
             "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
-          },
-          {
-            "label": "StatQuest",
-            "url": "https://www.youtube.com/@statquest"
           },
           {
             "label": "Kaggle Learn Advanced SQL",
@@ -600,11 +612,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-30",
         "phase": "Classic Machine Learning",
         "focus": "Linear regression from scratch",
-        "tasks": "Watch (30m): StatQuest gradient descent; Read (1h): Hands-On ML chapter 4 (linear models); NumPy (2h): linear regression with gradient descent, compare to sklearn; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (1h20m at 1.75x): bootcamp linear regression, \"Simple Linear Regression Introduction\" to \"Linear Regression with OLS\" (10 videos); NumPy (2h): linear regression with gradient descent, compare to sklearn; Read (30m): skim Hands-On ML chapter 4 on regularised linear models; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "StatQuest",
-            "url": "https://www.youtube.com/@statquest"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Hands-On ML notebooks",
@@ -628,11 +640,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-10-31",
         "phase": "Classic Machine Learning",
         "focus": "Classification + pipelines",
-        "tasks": "(Saturday, 6-7h) Read + code (2h): Hands-On ML chapter 3 (confusion matrix, precision, recall, ROC); NumPy (1.5h): logistic regression from scratch; Course (2.5h): Kaggle Intermediate ML + claim the certificate; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "(Saturday, 6-7h) Watch (35m at 1.75x): bootcamp regularisation and CV, \"Polynomial Regression Intuition\", \"Pipeline in Polynomial\", \"Ridge Regression\", \"Lasso & ElasticNet\", \"Types Of cross Validation\"; Watch (1h05m at 1.75x): bootcamp logistic regression, \"Can Linear Regression Solve Classifier Problem.\", \"Logistic Regression Indepth Math Intuition\", \"Performance Metrics\", \"Logistic Regression OVR\", \"Grid Search Hyper Parameter\", \"Randomised Search CV\", \"Logistic Imbalanced Dataset\", \"Logistic Regression ROC\"; NumPy (1.5h): logistic regression from scratch, then confusion matrix, precision, recall and F1 by hand; Course (2.5h): Kaggle Intermediate ML + claim the certificate; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "Hands-On ML notebooks",
-            "url": "https://github.com/ageron/handson-ml3"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Kaggle Learn Intermediate ML",
@@ -671,11 +683,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-02",
         "phase": "Classic Machine Learning",
         "focus": "Trees and ensembles",
-        "tasks": "Watch (45m): StatQuest decision trees + random forests; Read + code (2.5h): Hands-On ML chapters 6 and 7; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (55m at 1.75x): bootcamp trees and random forests, \"Introduction TO Decision Tree.\", \"Entropy and Gini Impurity\", \"Information Gain\", \"Entropy vs Gini impurity\", \"Decision Tree Split for Numerical Features\", \"Post Pruning & Pre Pruning\", \"Decision Tree Regression\", \"Bagging & Boosting Ensemble Techniques.\", \"Random Forest Regression\"; Read + code (2.5h): Hands-On ML chapters 6 and 7; DSA (30m): NeetCode Two Pointers, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "StatQuest",
-            "url": "https://www.youtube.com/@statquest"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Hands-On ML notebooks",
@@ -707,8 +719,12 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-03",
         "phase": "Classic Machine Learning",
         "focus": "Unsupervised learning",
-        "tasks": "Read (1h): k-means and PCA sections of Hands-On ML chapters 8 and 9; NumPy (2h): k-means from scratch, test on toy data; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (1h05m at 1.75x): bootcamp PCA and k-means, \"Introduction To Unsupervised Machine Learning\", \"Curse Of Dimensionality\", \"Feature Selection and Extraction\", \"PCA Geometric Intuition\", \"PCA Maths Intuition 01\", \"Eigen Decomposition on Covariance Matrix\", \"Kmeans Clustering Geometric Intuition\", \"How to Find K Values?\", \"Random Initialisation Trap(Kmeans++)\"; NumPy (2h): k-means from scratch with k-means++ init, test on toy data; Code (30m): PCA with sklearn on a real dataset, plot explained variance; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Hands-On ML notebooks",
             "url": "https://github.com/ageron/handson-ml3"
@@ -730,9 +746,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-11-04",
         "phase": "Classic Machine Learning",
-        "focus": "Project 2: setup + baseline",
-        "tasks": "Pick a tabular dataset that is not Titanic or house prices; Code (3h): problem statement, split, sklearn Pipeline, baseline model; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Boosting + Project 2 setup",
+        "tasks": "Watch (1h05m at 1.75x): bootcamp AdaBoost, gradient boosting, XGBoost, \"Introduction to Adaboost ML algorithm\", \"Creating Decision Tree Stump\", \"Performance of Decision Tree Stump\", \"Updating Weights.\", \"Normalising Weights and Assigning Bins\", \"Selecting New Datapoints for Next tree\", \"Final Prediction for Adaboost\", \"Gradient Boosting Regression\", \"Xgboost Classification Indepth Intuit\", \"Xgboost Regressor\"; Pick a tabular dataset that is not Titanic, house prices or one from the bootcamp; Code (2.5h): problem statement, split, sklearn Pipeline, baseline model; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Hands-On ML notebooks",
             "url": "https://github.com/ageron/handson-ml3"
@@ -754,12 +774,12 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-11-05",
         "phase": "Classic Machine Learning",
-        "focus": "Project 2: compare + tune",
-        "tasks": "Code (3.5h): 3 model types with cross-validation, tune the best one; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "SVM + Project 2: compare and tune",
+        "tasks": "Watch (30m at 1.75x): bootcamp SVM, \"Introduction to support vector Machine\" to \"SVM Kernels\" (6 videos); Code (3h): 3 model types with cross-validation (include XGBoost), tune the best one; DSA (30m): NeetCode Sliding Window, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "Hands-On ML notebooks",
-            "url": "https://github.com/ageron/handson-ml3"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "NeetCode practice",
@@ -778,9 +798,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 4,
         "date": "2026-11-06",
         "phase": "Classic Machine Learning",
-        "focus": "Project 2: analysis + README",
-        "tasks": "Code (2h): error analysis on the worst predictions; Write (1.5h): README with metrics table and why this model; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Naive Bayes, KNN + Project 2 README",
+        "tasks": "Watch (45m at 1.75x): bootcamp Naive Bayes and KNN, \"Understanding Baye's Theorem\", \"Variants Of Naive Baye's\", \"KNN Classification And Regression Indepth Intuition\", \"Optimization Of KNN- KDtree And Ball Tree Indepth Intuition\"; Code (1.5h): error analysis on the worst predictions; Write (1.5h): README with metrics table and why this model; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "NeetCode practice",
             "url": "https://neetcode.io/practice"
@@ -799,15 +823,19 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-07",
         "phase": "Classic Machine Learning",
         "focus": "Project 2: serve it",
-        "tasks": "(Saturday, 6-7h) Tutorial (2h): Docker Get Started; Tutorial (1.5h): FastAPI first steps + request body; Code (3h): /predict endpoint with pydantic validation + pytest tests, running in Docker; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "(Saturday, 6-7h) Watch (55m at 1.75x): bootcamp Docker, \"Dockers and What is Containers\" to \"Docker Compose\" (8 videos); Tutorial (1.5h): FastAPI first steps + request body; Code (3.5h): /predict endpoint with pydantic validation + pytest tests, running in Docker; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "Docker Get Started",
-            "url": "https://docs.docker.com/get-started/"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "FastAPI tutorial",
             "url": "https://fastapi.tiangolo.com/tutorial/"
+          },
+          {
+            "label": "Docker Get Started",
+            "url": "https://docs.docker.com/get-started/"
           },
           {
             "label": "NeetCode practice",
@@ -847,8 +875,13 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-09",
         "phase": "Classic Machine Learning",
         "focus": "Buffer day",
-        "tasks": "Catch-up: finish anything in your backlog first; If the backlog is empty: 3 DSA problems + rebuild one from-scratch drill from memory; Proof: commit today's code to your own repo (no AI attribution)",
-        "resources": [],
+        "tasks": "Catch-up: finish anything in your backlog first; If the backlog is empty: 3 DSA problems + rebuild one from-scratch drill from memory; Watch (1h at 1.75x): bootcamp clustering and anomaly detection (optional), \"Hierarichal Clustering\" to \"Local Outlier Factor Anomaly Detection\" (11 videos); Proof: commit today's code to your own repo (no AI attribution)",
+        "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          }
+        ],
         "isRestDay": false,
         "isProjectDay": false,
         "isBufferDay": true,
@@ -870,11 +903,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-10",
         "phase": "Deep Learning and Transformers",
         "focus": "Neural nets + micrograd",
-        "tasks": "Watch (1h): 3Blue1Brown neural networks chapters 1 to 4; Code-along (2.5h): Karpathy micrograd video; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (55m at 1.75x): bootcamp deep learning basics, \"Introduction\" to \"Chain Rule of Derivatives\" (7 videos); Code-along (2.5h, normal speed): Karpathy micrograd video; DSA (30m): NeetCode Stack, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "3Blue1Brown Neural Networks",
-            "url": "https://www.3blue1brown.com/topics/neural-networks"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Karpathy Zero to Hero",
@@ -897,9 +930,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-11-11",
         "phase": "Deep Learning and Transformers",
-        "focus": "Rebuild micrograd",
-        "tasks": "Code (3.5h): rebuild micrograd from a blank file and train a tiny MLP on toy data; DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Activations + rebuild micrograd",
+        "tasks": "Watch (50m at 1.75x): bootcamp activation functions, \"Vanishing Gradient Problem and Sigmoid\" to \"Which Activation Function To Apply When?\" (9 videos); Code (3h): rebuild micrograd from a blank file and train a tiny MLP on toy data; DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Karpathy Zero to Hero",
             "url": "https://karpathy.ai/zero-to-hero.html"
@@ -921,9 +958,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-11-12",
         "phase": "Deep Learning and Transformers",
-        "focus": "PyTorch basics",
-        "tasks": "Tutorial (3.5h): Learn the Basics up to building the model (tensors, datasets, dataloaders, transforms); DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Loss functions + PyTorch basics",
+        "tasks": "Watch (25m at 1.75x): bootcamp loss functions, \"Loss Function Vs Cost Function\", \"Regression Cost Function\", \"Loss Function Classification Problem\", \"Which Loss Function To Use When?\"; Tutorial (3h): PyTorch Learn the Basics up to building the model (tensors, datasets, dataloaders, transforms); DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "PyTorch Learn the Basics",
             "url": "https://pytorch.org/tutorials/beginner/basics/intro.html"
@@ -945,9 +986,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 4,
         "date": "2026-11-13",
         "phase": "Deep Learning and Transformers",
-        "focus": "PyTorch training loop",
-        "tasks": "Tutorial (1.5h): autograd, optimization loop, save and load; Code (1.5h): MNIST MLP training loop from memory, aim for 97%+; NumPy (30m): softmax + cross-entropy from scratch; DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Optimisers + PyTorch training loop",
+        "tasks": "Watch (55m at 1.75x): bootcamp optimisers, weight init, dropout, \"Gradient Descent Optimisers\" to \"Dropout Layers\" (10 videos); Tutorial (1h): autograd, optimization loop, save and load; Code (1.5h): MNIST MLP training loop from memory, aim for 97%+, then compare SGD vs Adam and dropout on vs off; NumPy (30m): softmax + cross-entropy from scratch; DSA (30m): NeetCode Binary Search, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "PyTorch Learn the Basics",
             "url": "https://pytorch.org/tutorials/beginner/basics/intro.html"
@@ -970,8 +1015,12 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-14",
         "phase": "Deep Learning and Transformers",
         "focus": "CNNs + Project 3 baseline",
-        "tasks": "(Saturday, 6-7h) Tutorial (2.5h): train a small CNN on CIFAR-10; Pick a small image dataset; Code (3.5h): small CNN from scratch as baseline, record accuracy; DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "(Saturday, 6-7h) Watch (40m at 1.75x): bootcamp CNN theory, \"CNN Introduction\" to \"CNN example with RGB\" (9 videos); Tutorial (2h): train a small CNN on CIFAR-10 in PyTorch; Pick a small image dataset; Code (3.5h): small CNN from scratch as baseline, record accuracy; DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "PyTorch CIFAR-10 tutorial",
             "url": "https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html"
@@ -1012,12 +1061,16 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 7,
         "date": "2026-11-16",
         "phase": "Deep Learning and Transformers",
-        "focus": "Project 3: transfer learning",
-        "tasks": "Code (3h): fine-tune pretrained ResNet18, compare with the baseline; Write (1h): confusion matrix + 5 misclassified examples in README; DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Project 3: transfer learning + RNN theory",
+        "tasks": "Code (3h): fine-tune pretrained ResNet18, compare with the baseline; Write (30m): confusion matrix + 5 misclassified examples in README; Watch (1h10m at 1.75x): bootcamp RNN theory, \"Introduction To NLP In Deep Learning\" to \"Problems With RNN\" (5 videos); DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
             "label": "PyTorch transfer learning tutorial",
             "url": "https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html"
+          },
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "NeetCode practice",
@@ -1044,12 +1097,12 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 1,
         "date": "2026-11-17",
         "phase": "Deep Learning and Transformers",
-        "focus": "Self-attention",
-        "tasks": "Code-along (2.5h): Karpathy GPT video, first half (self-attention); NumPy (1h): scaled dot-product attention from scratch; DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "LSTM, GRU and attention theory",
+        "tasks": "Watch (1h10m at 1.75x): bootcamp LSTM and GRU, \"Why LSTM RNN?\" to \"GRU RNN Complete Indepth Intuition\" (8 videos); Watch (40m at 1.75x): bootcamp seq2seq and attention, \"Indepth Intuition Of Encoder And Decoder-Sequence to Sequence Architecture\", \"Problems With Encoder And Decoder\", \"Attention Mechanism Indepth Architecture Explanation\"; NumPy (1.5h): an RNN cell forward pass + scaled dot-product attention from scratch; DSA (30m): NeetCode Linked List, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "Karpathy Zero to Hero",
-            "url": "https://karpathy.ai/zero-to-hero.html"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "NeetCode practice",
@@ -1068,9 +1121,13 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 2,
         "date": "2026-11-18",
         "phase": "Deep Learning and Transformers",
-        "focus": "Build GPT",
-        "tasks": "Code-along (3.5h): Karpathy GPT video, second half (transformer block, training); DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Self-attention + GPT part 1",
+        "tasks": "Watch (1h at 1.75x): bootcamp transformers, \"What And Why To Use Transformers\", \"Understanding the basic architecture of transformers\", \"Self Attention Layer Working\", \"Multi Head Attention\"; Code-along (2.5h, normal speed): Karpathy GPT video, first half (self-attention); DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Karpathy Zero to Hero",
             "url": "https://karpathy.ai/zero-to-hero.html"
@@ -1092,6 +1149,34 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 3,
         "date": "2026-11-19",
         "phase": "Deep Learning and Transformers",
+        "focus": "GPT part 2",
+        "tasks": "Watch (50m at 1.75x): bootcamp positional encoding and masked attention, \"Positional Encoding Indepth Intuition\", \"Decoder Transformer- Masked Multi Head Attention Working\"; Code-along (3h, normal speed): Karpathy GPT video, second half (transformer block, training); DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
+          {
+            "label": "Karpathy Zero to Hero",
+            "url": "https://karpathy.ai/zero-to-hero.html"
+          },
+          {
+            "label": "NeetCode practice",
+            "url": "https://neetcode.io/practice"
+          }
+        ],
+        "isRestDay": false,
+        "isProjectDay": false,
+        "isBufferDay": false,
+        "track": "ml",
+        "isLightDay": false
+      },
+      {
+        "id": "w07-d04",
+        "week": 7,
+        "dayOfWeek": 4,
+        "date": "2026-11-20",
+        "phase": "Deep Learning and Transformers",
         "focus": "Rebuild tiny GPT",
         "tasks": "Code (3.5h): rebuild the tiny GPT without the video and train it on your own text; DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
@@ -1111,29 +1196,18 @@ export const roadmap: WeekEntry[] = [
         "isLightDay": false
       },
       {
-        "id": "w07-d04",
-        "week": 7,
-        "dayOfWeek": 4,
-        "date": "2026-11-20",
-        "phase": "Deep Learning and Transformers",
-        "focus": "Job prep: CV and profiles",
-        "tasks": "Write (2h): one-page CV, projects at the top, certificates grouped in one line; Fix (1h): LinkedIn + GitHub profile, pin best repos; List (1h): 40 target companies with careers page links into the Applications tracker; Proof: commit today's code to your own repo (no AI attribution)",
-        "resources": [],
-        "isRestDay": false,
-        "isProjectDay": false,
-        "isBufferDay": false,
-        "track": "ml",
-        "isLightDay": false
-      },
-      {
         "id": "w07-d05",
         "week": 7,
         "dayOfWeek": 5,
         "date": "2026-11-21",
         "phase": "Deep Learning and Transformers",
-        "focus": "LLMs + Project 4",
-        "tasks": "(Saturday, 6-7h) Watch (1h): Karpathy Intro to LLMs talk; Course (2.5h): HF LLM Course chapters 1 to 3 (pipelines, tokenizers, fine-tuning with Trainer); Code (2.5h): pick a text classification dataset, TF-IDF + logistic regression baseline, start fine-tuning a small transformer; DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "NLP basics, LLMs + Project 4",
+        "tasks": "(Saturday, 6-7h) Watch (1h at 1.75x): bootcamp NLP basics, \"Bag of Words Intuition\", \"Advantages and Disadvantages BOW\", \"N Grams\", \"TF-IDF Instituion\", \"Advantages and Disadvantages of TF-IDF\", \"Word Embeddings\", \"Word2Vec Intuition\", \"Word2Vec Cbow Intuition\", \"SkipGram Indepth Intuition\", \"AvgWord2vec Indepth Intuition\"; Watch (1h, normal speed): Karpathy Intro to LLMs talk; Course (2.5h): HF LLM Course chapters 1 to 3 (pipelines, tokenizers, fine-tuning with Trainer); Code (2h): pick a text classification dataset, TF-IDF + logistic regression baseline, start fine-tuning a small transformer; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "Karpathy Intro to LLMs talk",
             "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g"
@@ -1141,10 +1215,6 @@ export const roadmap: WeekEntry[] = [
           {
             "label": "Hugging Face LLM Course",
             "url": "https://huggingface.co/learn/llm-course"
-          },
-          {
-            "label": "NeetCode practice",
-            "url": "https://neetcode.io/practice"
           }
         ],
         "isRestDay": false,
@@ -1159,8 +1229,8 @@ export const roadmap: WeekEntry[] = [
         "dayOfWeek": 6,
         "date": "2026-11-22",
         "phase": "Deep Learning and Transformers",
-        "focus": "Weekly review + first applications",
-        "tasks": "Send your first 3 applications and log them; Rebuild one thing from this week from a blank file, no notes; Tick this stage's done-when checklist and write down anything you still can't explain; Weekly check-in: paste your repo link to Claude for a review of the commits; Post 3 to 5 lines on LinkedIn about what you built this week; Proof: commit today's code to your own repo (no AI attribution)",
+        "focus": "Weekly review + CV",
+        "tasks": "Write (2h): one-page CV, projects at the top, certificates grouped in one line; Fix (1h): LinkedIn + GitHub profile, pin best repos; Send your first 3 applications and log them; Tick this stage's done-when checklist and write down anything you still can't explain; Weekly check-in: paste your repo link to Claude for a review of the commits; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [],
         "isRestDay": false,
         "isProjectDay": false,
@@ -1175,7 +1245,7 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-11-23",
         "phase": "Deep Learning and Transformers",
         "focus": "Project 4: evaluate",
-        "tasks": "Code (2.5h): finish fine-tuning, compare with baseline, error analysis; Write (1h): README results table; DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Code (2.5h): finish fine-tuning, compare with baseline, error analysis; Write (1h): README results table; List (45m): 40 target companies with careers page links into the Applications tracker; DSA (30m): NeetCode Trees, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
             "label": "Hugging Face LLM Course",
@@ -1386,11 +1456,11 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-12-01",
         "phase": "MLOps and Cloud",
         "focus": "Experiment tracking",
-        "tasks": "Watch (1.5h): MLOps Zoomcamp experiment tracking module; Code (2h): log Project 2 or 4 training runs to MLflow and register the best model; Apply (30m): 2 applications; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (40m at 1.75x): bootcamp MLflow, \"Model Experiment Tracking With MLFLOW\", \"MLFLOW Experiment Tracking With Remote Respository Dagshub\", \"Getting Started With MLOPS With MLFlow And Dagshub With Project\"; Code (2h): log Project 2 or 4 training runs to MLflow and register the best model; Apply (30m): 2 applications; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
-            "label": "MLOps Zoomcamp",
-            "url": "https://github.com/DataTalksClub/mlops-zoomcamp"
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "MLflow docs",
@@ -1410,15 +1480,15 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-12-02",
         "phase": "MLOps and Cloud",
         "focus": "CI + project structure",
-        "tasks": "Read (1h): GitHub Actions quickstart + Made With ML project structure; Code (2.5h): workflow that runs tests + Docker build on every push, refactor Project 5 into a clean package; DSA (30m): NeetCode mixed, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Watch (35m at 1.75x): bootcamp project structure and CI, \"Implementing Project Structure, Logging And Exception Handling\", \"Packaging the Project With Setup.py\", \"Building Docker Image And Github Actions\"; Code (2.5h): GitHub Actions workflow that runs tests + Docker build on every push, refactor Project 5 into a clean package with logging and custom exceptions; DSA (30m): NeetCode mixed, 1 new problem + re-solve yesterday's from a blank file; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
+          },
           {
             "label": "GitHub Actions docs",
             "url": "https://docs.github.com/en/actions"
-          },
-          {
-            "label": "Made With ML",
-            "url": "https://madewithml.com/"
           },
           {
             "label": "NeetCode practice",
@@ -1438,11 +1508,15 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-12-03",
         "phase": "MLOps and Cloud",
         "focus": "Azure setup",
-        "tasks": "Setup (1h): Azure for Students account; Course (1.5h): Microsoft Learn intro to containers on Azure; Code (1h): push your image to Azure Container Registry; Apply (30m): 2 applications; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Setup (1h): Azure for Students account; Watch (15m at 1.75x): bootcamp Azure deploy, \"Deployment Azure With Container And Images\"; Course (1h): Microsoft Learn intro to containers on Azure; Code (1h): push your image to Azure Container Registry; Apply (30m): 2 applications; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
             "label": "Azure for Students",
             "url": "https://azure.microsoft.com/en-us/free/students/"
+          },
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           },
           {
             "label": "Microsoft Learn",
@@ -1534,11 +1608,15 @@ export const roadmap: WeekEntry[] = [
         "date": "2026-12-07",
         "phase": "MLOps and Cloud",
         "focus": "Buffer day",
-        "tasks": "Catch-up: finish anything in your backlog first; If the backlog is empty: 3 DSA problems + rebuild one from-scratch drill from memory; Study (1h): AI-901 learning path; Proof: commit today's code to your own repo (no AI attribution)",
+        "tasks": "Catch-up: finish anything in your backlog first; If the backlog is empty: 3 DSA problems + rebuild one from-scratch drill from memory; Study (1h): AI-901 learning path; Watch (15m at 1.75x): bootcamp DVC (optional), \"Data Versioning Control Implementation\"; Proof: commit today's code to your own repo (no AI attribution)",
         "resources": [
           {
             "label": "Microsoft Learn AI-901 study path",
             "url": ""
+          },
+          {
+            "label": "Udemy bootcamp",
+            "url": "https://www.udemy.com/course/complete-machine-learning-nlp-bootcamp-mlops-deployment/"
           }
         ],
         "isRestDay": false,

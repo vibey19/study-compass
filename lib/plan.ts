@@ -80,6 +80,58 @@ export function subtasksOf(day: DayEntry): string[] {
     .filter(Boolean);
 }
 
+/** A bootcamp watch sub-task, e.g. "Watch (1h20m at 1.75x): bootcamp ...". */
+export type WatchTask = {
+  /** the bracket time as written, e.g. "1h20m" */
+  time: string;
+  minutes: number;
+};
+
+// Not anchored: a Saturday's first sub-task carries a "(Saturday, 6-7h) "
+// prefix, and that watch time still counts.
+const BOOTCAMP_WATCH = /Watch \(([^)]*?) at 1\.75x\):\s*bootcamp/i;
+
+/** Minutes in a bracket time like "1h20m", "1h" or "55m". */
+function watchMinutes(time: string): number {
+  const h = time.match(/(\d+)\s*h/);
+  const m = time.match(/(\d+)\s*m/);
+  return (h ? Number(h[1]) * 60 : 0) + (m ? Number(m[1]) : 0);
+}
+
+/**
+ * The bootcamp watch task in this sub-task, or null when it isn't one.
+ * Code-alongs stay at normal speed, so they never match.
+ */
+export function bootcampWatch(subtask: string): WatchTask | null {
+  const m = subtask.match(BOOTCAMP_WATCH);
+  if (!m) return null;
+  const time = m[1].trim();
+  return { time, minutes: watchMinutes(time) };
+}
+
+/** Every bootcamp watch sub-task in the plan, keyed as the day card keys them. */
+export const bootcampWatchTasks: { key: string; task: WatchTask }[] =
+  allDays.flatMap((d) =>
+    subtasksOf(d).flatMap((s, i) => {
+      const task = bootcampWatch(s);
+      return task ? [{ key: `${d.id}#${i}`, task }] : [];
+    })
+  );
+
+/** The plan's total bootcamp watch time, read off the curriculum. */
+export const BOOTCAMP_TOTAL_MINUTES = bootcampWatchTasks.reduce(
+  (n, w) => n + w.task.minutes,
+  0
+);
+
+/** "1h20m" / "55m" — for showing a minute total compactly. */
+export function formatMinutes(mins: number): string {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (!h) return `${m}m`;
+  return m ? `${h}h${pad(m)}m` : `${h}h`;
+}
+
 
 /** Weekly review and buffer days are light; Saturday is the heavy day. */
 export type DayIntensity = { hours: string; label: string; heavy: boolean };

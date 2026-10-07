@@ -16,7 +16,7 @@ export default function ChecklistsPage() {
   return (
     <div>
       <PageHeader title="Stage checklists">
-        One checklist per stage. Rule 5: don&apos;t start the next stage until
+        One checklist per stage. Rule 6: don&apos;t start the next stage until
         the current one is ticked.
       </PageHeader>
 

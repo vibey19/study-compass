@@ -7,6 +7,7 @@ import { projectForDay } from "@/data/projects";
 import { checklistForPhase } from "@/data/tracker";
 import {
   PHASE_META,
+  bootcampWatch,
   dayIntensity,
   formatDate,
   isPhaseFinalReviewDay,
@@ -124,6 +125,7 @@ export function DayCard({
           {subs.map((s, i) => {
             const key = `${day.id}#${i}`;
             const checked = !!subtasks[key];
+            const watch = bootcampWatch(s);
             return (
               <li key={key}>
                 <label className="flex cursor-pointer items-start gap-2 text-sm">
@@ -140,6 +142,14 @@ export function DayCard({
                         : "text-zinc-700 dark:text-zinc-300"
                     }
                   >
+                    {watch && (
+                      <span
+                        className="mr-1.5 inline-block rounded-full bg-violet-100 px-1.5 py-0.5 align-[1px] text-[10px] font-semibold text-violet-700 dark:bg-violet-500/15 dark:text-violet-300"
+                        title="Bootcamp video — watch at 1.75x"
+                      >
+                        1.75x · {watch.time}
+                      </span>
+                    )}
                     <InlineMd text={s} />
                   </span>
                 </label>

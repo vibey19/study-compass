@@ -11,7 +11,12 @@ import {
   theoryQuestions,
   type ChecklistStage,
 } from "@/data/tracker";
-import { studyDays, todayISO } from "@/lib/plan";
+import {
+  BOOTCAMP_TOTAL_MINUTES,
+  bootcampWatchTasks,
+  studyDays,
+  todayISO,
+} from "@/lib/plan";
 import type {
   ApplicationEntry,
   CertState,
@@ -175,4 +180,25 @@ export function scratchDone(scratch: Record<string, ScratchState>): number {
 
 export function theoryDone(theory: Record<string, boolean>): number {
   return theoryQuestions.filter((q) => theory[q.id]).length;
+}
+
+/* ------------------------------------------------- Bootcamp watch time */
+
+export type BootcampWatched = {
+  /** minutes of ticked bootcamp watch sub-tasks */
+  minutes: number;
+  totalMinutes: number;
+  tasksDone: number;
+  tasksTotal: number;
+};
+
+/** Watch time ticked off against the plan's bootcamp total (rule 1 and 3). */
+export function bootcampWatched(subtasks: Record<string, boolean>): BootcampWatched {
+  const done = bootcampWatchTasks.filter((w) => subtasks[w.key]);
+  return {
+    minutes: done.reduce((n, w) => n + w.task.minutes, 0),
+    totalMinutes: BOOTCAMP_TOTAL_MINUTES,
+    tasksDone: done.length,
+    tasksTotal: bootcampWatchTasks.length,
+  };
 }

@@ -35,6 +35,8 @@ export const stageChecklists: ChecklistStage[] = [
       "Understand array shapes and broadcasting in NumPy",
       "Can explain: dot product, matrix multiplication, cosine similarity, derivative, chain rule, gradient",
       "Can explain: mean, variance, normal distribution, conditional probability, Bayes rule, p-value",
+      "Can explain: central limit theorem, z-test vs t-test, chi-square, type 1 vs type 2 error, confidence interval",
+      "Can explain how you'd handle missing values, outliers, imbalance (incl. SMOTE) and categorical encoding",
       "Project 1 (EDA) on GitHub with 5 written findings",
     ],
   },
@@ -46,7 +48,7 @@ export const stageChecklists: ChecklistStage[] = [
       "Can explain train/validation/test split and cross-validation, and why test data stays untouched",
       "Can pick and justify a metric: MAE/RMSE/R2 for regression, precision/recall/F1/ROC-AUC for classification",
       "Can explain data leakage with an example and how a Pipeline prevents it",
-      "Can explain L1 vs L2 regularisation, decision trees, random forests, gradient boosting, k-means, PCA at intuition level",
+      "Can explain L1 vs L2 regularisation, decision trees (entropy vs gini), random forests, AdaBoost, gradient boosting, XGBoost, SVM and kernels, Naive Bayes, KNN, k-means, PCA at intuition level",
       "Linear regression, logistic regression and k-means written in NumPy from scratch",
       "Project 2 on GitHub with metrics table and model choice explained",
     ],
@@ -57,6 +59,8 @@ export const stageChecklists: ChecklistStage[] = [
     items: [
       "Can write a PyTorch training loop from memory (dataset, dataloader, model, loss, optimizer, train, eval)",
       "Can explain backprop and the chain rule on paper using micrograd",
+      "Can explain vanishing and exploding gradients, when to use which activation and loss function, and SGD vs momentum vs Adam",
+      "Can explain why RNNs struggle with long sequences, what LSTM gates do, and why attention replaced them",
       "Can explain what a convolution does and why CNNs suit images",
       "Can explain transfer learning and when to use it",
       "Can explain self-attention (queries, keys, values) and a transformer block on paper",
@@ -219,8 +223,9 @@ export type MockType = (typeof MOCK_TYPES)[number];
 /* ------------------------------------------------------------------ C7 */
 
 export const rules: string[] = [
-  "Max 1 hour of video a day. The rest is typing.",
+  "Max about 1.5 hours of real watching a day (bootcamp at 1.75x, code-alongs at normal speed). The rest is typing.",
   "Watch and type along once, rebuild from a blank file the next day. Only the rebuild counts.",
+  "Watching at 1.75x buys you more topics, not less coding. Never cut the coding blocks to watch more.",
   "AI autocomplete off in learning repos. AI can explain or review code you wrote, never write it.",
   "No commit, no credit. Every day needs a proof link.",
   "Don't start the next stage until the done-when checklist is ticked.",
@@ -255,11 +260,11 @@ export type CertEntry = {
 export const certifications: CertEntry[] = [
   {
     id: "cs50p",
-    name: "CS50P certificate (Harvard)",
+    name: "CS50P free CS50 Certificate (Harvard)",
     group: "free",
     plannedWeek: 2,
     plannedLabel: "Week 2",
-    note: "Submit the final project.",
+    note: "Submit the final project. Pick the free option, not the paid edX verified certificate — start from cs50.harvard.edu/python and register on edX on the free track.",
   },
   { id: "kaggle-pandas", name: "Kaggle Learn Pandas", group: "free", plannedWeek: 3, plannedLabel: "Week 3", cvGroup: "Kaggle Learn" },
   { id: "kaggle-dataviz", name: "Kaggle Learn Data Visualization", group: "free", plannedWeek: 3, plannedLabel: "Week 3", cvGroup: "Kaggle Learn" },

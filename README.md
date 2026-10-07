@@ -16,6 +16,9 @@ Sunday, and four buffer days to catch up on anything that slipped.
   stage's done-when checklist, the house rules, and per-phase progress
 - **Weekly view** — each day as a card with checkable sub-tasks, resource
   links, notes, an hours badge, and a proof field for the day's commit
+- **Bootcamp watch time** — bootcamp videos are watched at 1.75x, so each
+  watch sub-task carries a 1.75x badge with its real runtime, and the
+  dashboard totals the time you've ticked off against the plan's 26h40m
 - **Daily proof** — "no commit, no credit": completing a day without a proof
   link asks first, or is refused outright if you make proof required in
   Settings

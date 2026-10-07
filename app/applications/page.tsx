@@ -71,7 +71,7 @@ export default function ApplicationsPage() {
   return (
     <div>
       <PageHeader title="Applications">
-        Rule 7: start applying in Week 7, don&apos;t wait until you feel ready.
+        Rule 8: start applying in Week 7, don&apos;t wait until you feel ready.
         Every application gets followed up.
       </PageHeader>
 

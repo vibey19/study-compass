@@ -223,7 +223,7 @@ export default function SettingsPage() {
       <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
         <h2 className="font-semibold">Daily proof</h2>
         <p className="mt-1 text-sm text-zinc-500">
-          Rule 4 of the plan is "no commit, no credit". By default completing a
+          Rule 5 of the plan is "no commit, no credit". By default completing a
           day without a proof link only asks for confirmation; turn this on to
           refuse it outright.
         </p>

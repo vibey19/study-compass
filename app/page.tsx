@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DSA_TOTAL_TARGET } from "@/data/tracker";
-import { allDays, formatDate, todayISO } from "@/lib/plan";
+import { allDays, formatDate, formatMinutes, todayISO } from "@/lib/plan";
 import {
   backlogDays,
   computeStats,
@@ -12,6 +12,7 @@ import {
 } from "@/lib/schedule";
 import {
   applicationStats,
+  bootcampWatched,
   certsEarned,
   dsaProgress,
   proofCount,
@@ -23,7 +24,8 @@ import { RulesBanner } from "@/components/rules-banner";
 import { StageChecklistCard } from "@/components/stage-checklist-card";
 
 export default function Dashboard() {
-  const { progress, proofs, dsa, applications, certs, ready } = useProgress();
+  const { progress, proofs, subtasks, dsa, applications, certs, ready } =
+    useProgress();
   const schedule = useSchedule();
   const [today, setToday] = useState<string | null>(null);
 
@@ -44,6 +46,7 @@ export default function Dashboard() {
   const dsaStats = dsaProgress(dsa);
   const appStats = applicationStats(applications, today);
   const earnedCerts = certsEarned(certs);
+  const watched = bootcampWatched(subtasks);
   const firstDay = allDays[0];
 
   const focusDay =
@@ -198,10 +201,10 @@ export default function Dashboard() {
       </section>
 
       {/* Tracker tiles */}
-      <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <section className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <div
           className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
-          title="Rule 4: no commit, no credit."
+          title="Rule 5: no commit, no credit."
         >
           <p className="text-xs uppercase tracking-wide text-zinc-500">
             Days with proof
@@ -257,6 +260,20 @@ export default function Dashboard() {
             </span>
           </p>
         </Link>
+        <div
+          className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
+          title={`Rule 1: max about 1.5 hours of real watching a day. ${watched.tasksDone} of ${watched.tasksTotal} bootcamp watch tasks ticked.`}
+        >
+          <p className="text-xs uppercase tracking-wide text-zinc-500">
+            Bootcamp watched
+          </p>
+          <p className="mt-1 text-2xl font-bold">
+            {formatMinutes(watched.minutes)}
+            <span className="text-sm font-normal text-zinc-400">
+              /{formatMinutes(watched.totalMinutes)}
+            </span>
+          </p>
+        </div>
       </section>
 
       {/* Today's plan */}

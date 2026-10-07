@@ -452,7 +452,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     [progress]
   );
 
-  // Rule 4 of the plan: no commit, no credit. Completing a day without a
+  // Rule 5 of the plan: no commit, no credit. Completing a day without a
   // proof link asks first, or is refused outright if the user made proof
   // mandatory in Settings. Un-ticking a day is never questioned.
   const requestToggleDay = useCallback(

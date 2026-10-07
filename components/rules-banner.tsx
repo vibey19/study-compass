@@ -17,7 +17,9 @@ export function RulesBanner() {
       >
         <span className="font-semibold">Rules</span>
         <span className="text-xs text-zinc-500">
-          {open ? "the eight that make this work" : `${rules.length} rules`}
+          {open
+            ? `the ${rules.length} that make this work`
+            : `${rules.length} rules`}
         </span>
         <span className="ml-auto text-zinc-400">{open ? "▾" : "▸"}</span>
       </button>
